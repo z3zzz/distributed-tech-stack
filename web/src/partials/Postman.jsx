@@ -14,6 +14,10 @@ function Postman({
   const { method, body } = useSelector((state) => state.field);
 
   const isBodyRequired = method === "POST" || method === "PUT";
+  const isGet = method === "GET";
+  const isPost = method === "POST";
+  const isPut = method === "PUT";
+  const isDelete = method === "DELETE";
   const isOk = statusCode.toString().startsWith("2");
 
   const onMethodChange = (e) => {
@@ -45,30 +49,92 @@ function Postman({
           className='px-4 py-3 flex-1 block bg-gray-100 border-transparent focus:border-slate-300 focus:bg-white focus:ring-0'
           onChange={onUriChange}
         >
-          <option value='/self/introduction'>/저의이야기/자기소개</option>
-          <option value='/self/webtoon'>/저의이야기/좋아하는 웹툰</option>
-          <option value='/self/cartoon'>/저의이야기/좋아하는 만화</option>
-          <option value='/self/whyDeveloperCareer'>
-            /저의이야기/개발자 커리어를 시작한 이유
-          </option>
-          <option value='/self/goodPointOfDeveloper'>
-            /저의이야기/개발자가 되어서 좋은 점
-          </option>
-          <option value='/self/myAbility'>/저의이야기/지니고 있는 능력</option>
-          <option value='/self/effort'>/개발/지금까지 해 온 노력</option>
-          <option value='/self/howToSolveProblem'>
-            /개발/문제를 해결하는 방법
-          </option>
-          <option value='/dev/techStack'>/개발/기술 스택</option>
-          <option value='/dev/architecture'>/개발/본 사이트의 아키텍쳐</option>
-          <option value='/participate/whyVisit'>
-            /참여/저의 사이트를 방문해 주신 계기
-          </option>
-          <option value='/participate/review'>/참여/방문 후기</option>
-          <option value='/participate/funContent'>
-            /참여/재미있었던 콘텐츠
-          </option>
-          <option value='/participate/question'>/참여/더 궁금한 콘텐츠</option>
+          {isGet && (
+            <>
+              <option value='/self/introduction'>/저의이야기/자기소개</option>
+              <option value='/self/webtoon'>/저의이야기/좋아하는 웹툰</option>
+              <option value='/self/cartoon'>/저의이야기/좋아하는 만화</option>
+              <option value='/self/whyDeveloperCareer'>
+                /저의이야기/개발자 커리어를 시작한 이유
+              </option>
+              <option value='/self/goodPointOfDeveloper'>
+                /저의이야기/개발자가 되어서 좋은 점
+              </option>
+              <option value='/self/myAbility'>
+                /저의이야기/지니고 있는 능력
+              </option>
+              <option value='/self/effort'>/개발/지금까지 해 온 노력</option>
+              <option value='/self/howToSolveProblem'>
+                /개발/문제를 해결하는 방법
+              </option>
+              <option value='/dev/techStack'>/개발/기술 스택</option>
+              <option value='/dev/architecture'>
+                /개발/본 사이트의 아키텍쳐
+              </option>
+            </>
+          )}
+          {isPost && (
+            <>
+              <option value='/participate/whyVisit'>
+                /참여/저의 사이트를 방문해 주신 계기
+              </option>
+              <option value='/participate/review'>/참여/방문 후기</option>
+              <option value='/participate/funContent'>
+                /참여/재미있었던 콘텐츠
+              </option>
+              <option value='/participate/question'>
+                /참여/더 궁금한 콘텐츠
+              </option>
+            </>
+          )}
+          {isPut && (
+            <>
+              <option value='/self/introduction'>/저의이야기/자기소개</option>
+              <option value='/self/webtoon'>/저의이야기/좋아하는 웹툰</option>
+              <option value='/self/cartoon'>/저의이야기/좋아하는 만화</option>
+              <option value='/self/whyDeveloperCareer'>
+                /저의이야기/개발자 커리어를 시작한 이유
+              </option>
+              <option value='/self/goodPointOfDeveloper'>
+                /저의이야기/개발자가 되어서 좋은 점
+              </option>
+              <option value='/self/myAbility'>
+                /저의이야기/지니고 있는 능력
+              </option>
+              <option value='/self/effort'>/개발/지금까지 해 온 노력</option>
+              <option value='/self/howToSolveProblem'>
+                /개발/문제를 해결하는 방법
+              </option>
+              <option value='/dev/techStack'>/개발/기술 스택</option>
+              <option value='/dev/architecture'>
+                /개발/본 사이트의 아키텍쳐
+              </option>
+            </>
+          )}
+          {isDelete && (
+            <>
+              <option value='/self/introduction'>/저의이야기/자기소개</option>
+              <option value='/self/webtoon'>/저의이야기/좋아하는 웹툰</option>
+              <option value='/self/cartoon'>/저의이야기/좋아하는 만화</option>
+              <option value='/self/whyDeveloperCareer'>
+                /저의이야기/개발자 커리어를 시작한 이유
+              </option>
+              <option value='/self/goodPointOfDeveloper'>
+                /저의이야기/개발자가 되어서 좋은 점
+              </option>
+              <option value='/self/myAbility'>
+                /저의이야기/지니고 있는 능력
+              </option>
+              <option value='/self/effort'>/개발/지금까지 해 온 노력</option>
+              <option value='/self/howToSolveProblem'>
+                /개발/문제를 해결하는 방법
+              </option>
+              <option value='/dev/techStack'>/개발/기술 스택</option>
+              <option value='/dev/architecture'>
+                /개발/본 사이트의 아키텍쳐
+              </option>
+            </>
+          )}
         </select>
         <button
           className='bg-blue-500 hover:bg-blue-700 block text-white font-bold ml-2 py-2 px-4 rounded-md'

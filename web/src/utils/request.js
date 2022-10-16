@@ -34,7 +34,7 @@ async function del(endpoint) {
 }
 
 const sendRequest = async ({ method, uri, body, language, db, server }) => {
-  const endpoint = `/api/${server}/${language}${uri}?db=${db}`;
+  const endpoint = `/api/${server}/${language}/${db}${uri}`;
   console.log({ endpoint });
 
   switch (method) {
