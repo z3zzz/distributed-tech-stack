@@ -75,7 +75,7 @@ function Footer() {
                     target='_blank'
                   >
                     <svg
-                      class='w-8 h-8 p-2 pr-1 fill-current'
+                      className='w-8 h-8 p-2 pr-1 fill-current'
                       xmlns='http://www.w3.org/2000/svg'
                       viewBox='0 0 500 500'
                     >

@@ -18,6 +18,12 @@ function Sidebar() {
     dispatch(setServer(e.target.value));
   };
 
+  const onClick = () => {
+    dispatch(setLanguage("python"));
+    dispatch(setDb("pg"));
+    dispatch(setServer("apache"));
+  };
+
   return (
     <aside className='mb-8 md:mb-0 md:w-64 lg:w-72 md:ml-12 lg:ml-20 md:shrink-0 md:order-1'>
       <div
@@ -28,8 +34,11 @@ function Sidebar() {
       >
         <div className='relative bg-gray-50 rounded-xl border border-gray-200 p-5'>
           <div className='absolute top-5 right-5 leading-none'>
-            <button className='text-sm font-medium text-indigo-500 hover:underline'>
-              Clear
+            <button
+              className='text-sm font-inter text-indigo-500 hover:underline'
+              onClick={onClick}
+            >
+              초기화
             </button>
           </div>
 
