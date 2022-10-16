@@ -37,7 +37,7 @@ function Postman() {
       
       {/* Textarea for POST, PATCH*/}
       <div>
-        <textarea id="message" rows="4" class="mt-5 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-transparent focus:border-slate-300 " placeholder="자유롭게 입력해 주세요."></textarea>
+        <textarea id="message" rows="4" className="mt-5 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-transparent focus:border-slate-300 min-h-[5rem]" placeholder="자유롭게 입력해 주세요."></textarea>
       </div>
 
       {/* Response */}

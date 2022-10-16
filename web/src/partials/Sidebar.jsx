@@ -13,133 +13,79 @@ function Sidebar() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-1 gap-6">
-            {/* Group 1 */}
+            {/* Language Selection */}
             <div>
-              <div className="text-sm text-gray-800 font-semibold mb-3">Job Type</div>
+              <div className="text-sm text-gray-800 font-semibold mb-3">API 개발 언어</div>
               <ul className="space-y-2">
                 <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Full-time</span>
+                  <input type="radio" id="langPython" name="lang" value="langPython" className="hidden peer" required />
+                  <label htmlFor="langPython" className="inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <div className="block">
+                          <div className="w-full text-lg font-semibold">Python (Flask)</div>
+                      </div>
                   </label>
                 </li>
                 <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Part-time</span>
+                  <input type="radio" id="langJava" name="lang" value="langJava" className="hidden peer" />
+                  <label htmlFor="langJava" className="inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <div className="block">
+                          <div className="w-full text-lg font-semibold">Java (Spring)</div>
+                      </div>
                   </label>
                 </li>
                 <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Intership</span>
-                  </label>
-                </li>
-                <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Contract / Freelance</span>
-                  </label>
-                </li>
-                <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Co-founder</span>
+                  <input type="radio" id="langTs" name="lang" value="langTs" className="hidden peer" />
+                  <label htmlFor="langTs" className="inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <div className="block">
+                          <div className="w-full text-lg font-semibold">TS (Fastify)</div>
+                      </div>
                   </label>
                 </li>
               </ul>
             </div>
-            {/* Group 2 */}
+            {/* Database Selection */}
             <div>
-              <div className="text-sm text-gray-800 font-semibold mb-3">Job Roles</div>
+              <div className="text-sm text-gray-800 font-semibold mb-3">DB 종류</div>
               <ul className="space-y-2">
                 <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" defaultChecked />
-                    <span className="text-sm text-gray-600 ml-2">Programming</span>
+                  <input type="radio" id="dbPg" name="db" value="dbPg" className="hidden peer" required />
+                  <label htmlFor="dbPg" className="inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <div className="block">
+                          <div className="w-full text-lg font-semibold">PostgreSQL</div>
+                      </div>
                   </label>
                 </li>
                 <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Design</span>
-                  </label>
-                </li>
-                <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Management / Finance</span>
-                  </label>
-                </li>
-                <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Customer Support</span>
-                  </label>
-                </li>
-                <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Sales / Marketing</span>
+                  <input type="radio" id="dbMongo" name="db" value="dbMongo" className="hidden peer" />
+                  <label htmlFor="dbMongo" className="inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <div className="block">
+                          <div className="w-full text-lg font-semibold">MongoDB</div>
+                      </div>
                   </label>
                 </li>
               </ul>
             </div>
-            {/* Group 3 */}
+            {/* Server Selection */}
             <div>
-              <div className="text-sm text-gray-800 font-semibold mb-3">Remote Only</div>
-              <div className="flex items-center">
-                <div className="form-switch">
-                  <input type="checkbox" id="remote-toggle" className="sr-only" checked={remoteJob} onChange={() => setRemoteJob(!remoteJob)} />
-                  <label className="bg-gray-300" htmlFor="remote-toggle">
-                    <span className="bg-white shadow-sm" aria-hidden="true" />
-                    <span className="sr-only">Remote Only</span>
-                  </label>
-                </div>
-                <div className="text-sm text-gray-400 italic ml-2">{remoteJob ? 'On' : 'Off'}</div>
-              </div>
-            </div>
-            {/* Group 3 */}
-            <div>
-              <div className="text-sm text-gray-800 font-semibold mb-3">Salary Range</div>
+              <div className="text-sm text-gray-800 font-semibold mb-3">서버 종류</div>
               <ul className="space-y-2">
                 <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">$20K - $50K</span>
+                  <input type="radio" id="serverApache" name="server" value="serverApache" className="hidden peer" required />
+                  <label htmlFor="serverApache" className="inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <div className="block">
+                          <div className="w-full text-lg font-semibold">Apache2</div>
+                      </div>
                   </label>
                 </li>
                 <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">$50K - $100K</span>
-                  </label>
-                </li>
-                <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">&gt; $100K</span>
-                  </label>
-                </li>
-                <li>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="text-sm text-gray-600 ml-2">Drawing / Painting</span>
+                  <input type="radio" id="serverNginx" name="server" value="serverNginx" className="hidden peer" />
+                  <label htmlFor="serverNginx" className="inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <div className="block">
+                          <div className="w-full text-lg font-semibold">Nginx</div>
+                      </div>
                   </label>
                 </li>
               </ul>
-            </div>
-            {/* Group 4 */}
-            <div>
-              <div className="text-sm text-gray-800 font-semibold mb-3">Location</div>
-              <label className="sr-only">Location</label>
-              <select className="form-select w-full">
-                <option>Anywhere</option>
-                <option>London</option>
-                <option>San Francisco</option>
-                <option>New York</option>
-                <option>Berlin</option>
-              </select>
             </div>
           </div>
         </div>
