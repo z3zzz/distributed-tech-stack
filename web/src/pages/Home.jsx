@@ -35,6 +35,8 @@ function Home() {
         server,
       });
 
+      console.log({ res });
+
       console.log({ data: res.data });
       setResponse(res.data.result);
       setResponseTime(res.responseTime);

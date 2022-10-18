@@ -1,7 +1,17 @@
 import axios from "axios";
 
+axios.interceptors.request.use((x) => {
+  // to avoid overwriting if another interceptor
+  // already defined the same object (meta)
+  x.meta = x.meta || {};
+  x.meta.requestStartedAt = new Date().getTime();
+  return x;
+});
+
 axios.interceptors.response.use((x) => {
-  x.responseTime = new Date().getTime() - x.config.meta.beginTimer;
+  console.log(x.config.meta.requestStartedAt);
+  x.responseTime = new Date().getTime() - x.config.meta.requestStartedAt;
+  console.log({ responseTime: x.responseTime });
   return x;
 });
 
@@ -53,17 +63,17 @@ const sendRequest = async ({
     endpoint = `/api/${server}/${language}/${db}${uri}`;
   }
 
-  console.log({ endpoint });
+  console.log({ endpoint, method });
 
   switch (method) {
     case "GET":
-      await get(endpoint);
+      return get(endpoint);
     case "POST":
-      await post(endpoint, { text: body });
+      return post(endpoint, { text: body });
     case "PUT":
-      await put(endpoint, { text: body, password });
+      return put(endpoint, { text: body, password });
     case "DELETE":
-      await del(endpoint, { password });
+      return del(endpoint, { password });
     default:
       throw new Error(`Unsupported method: ${method}`);
   }

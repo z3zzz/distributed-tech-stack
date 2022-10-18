@@ -1,15 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const fieldSlice = createSlice({
-  name: 'field',
+  name: "field",
   initialState: {
-    method: 'GET',
-    uri: '/self/introduction',
-    password: '',
-    body: '',
-    language: 'python',
-    db: 'pg',
-    server: 'apache',
+    method: "GET",
+    uri: "/self/introduction",
+    password: "",
+    body: "",
+    language: "python",
+    db: "pg",
+    server: "apache",
   },
   reducers: {
     setMethod: (state, action) => {
