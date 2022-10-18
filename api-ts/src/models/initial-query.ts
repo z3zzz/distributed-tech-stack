@@ -13,6 +13,7 @@ export const initialQuery = `
     id SERIAL PRIMARY KEY,
     title VARCHAR(200) NOT NULL UNIQUE,
     content TEXT NOT NULL,
+    github_link VARCHAR(200),
     tech_stack text[],
     photos text[],
     count INTEGER DEFAULT 0, 

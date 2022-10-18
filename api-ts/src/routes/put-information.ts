@@ -61,6 +61,11 @@ export async function putInformationRoutes(
     const { content, password, photos, techStack } = req.body;
     let isUpdated: boolean;
 
+    if (password !== PASSWORD) {
+      res.status(400);
+      throw new Error("비밀번호가 일치하지 않습니다.");
+    }
+
     const title = `dev_${type.toLowerCase()}`;
 
     if (type === "portfolio") {
