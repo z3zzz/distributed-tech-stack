@@ -38,15 +38,21 @@ function Home() {
       console.log({ res });
 
       console.log({ data: res.data });
-      setResponse(res.data.result);
+      setResponse(res.data.content);
       setResponseTime(res.responseTime);
       setStatusCode(res.status);
       setStatusText(res.statusText);
     } catch (e) {
-      setResponse(`요청 중 문제가 발생하였습니다 => ${e.message}`);
+      console.log(e);
+      setResponse(
+        `요청 중 문제가 발생하였습니다. 
+
+          => ${e.response?.data?.message || e.message}`
+      );
 
       if (e.response) {
         setStatusCode(e.response.status);
+        setResponseTime(e.responseTime);
 
         if (e.response.status.toString().startsWith("4")) {
           setStatusText("Bad Request");

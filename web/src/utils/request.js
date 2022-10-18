@@ -8,12 +8,16 @@ axios.interceptors.request.use((x) => {
   return x;
 });
 
-axios.interceptors.response.use((x) => {
-  console.log(x.config.meta.requestStartedAt);
-  x.responseTime = new Date().getTime() - x.config.meta.requestStartedAt;
-  console.log({ responseTime: x.responseTime });
-  return x;
-});
+axios.interceptors.response.use(
+  (x) => {
+    x.responseTime = new Date().getTime() - x.config.meta.requestStartedAt;
+    return x;
+  },
+  (x) => {
+    x.responseTime = new Date().getTime() - x.config.meta.requestStartedAt;
+    return Promise.reject(x);
+  }
+);
 
 async function get(endpoint) {
   return axios.get(endpoint);
@@ -69,9 +73,9 @@ const sendRequest = async ({
     case "GET":
       return get(endpoint);
     case "POST":
-      return post(endpoint, { text: body });
+      return post(endpoint, { content: body });
     case "PUT":
-      return put(endpoint, { text: body, password });
+      return put(endpoint, { content: body, password });
     case "DELETE":
       return del(endpoint, { password });
     default:

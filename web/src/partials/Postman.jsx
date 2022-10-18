@@ -139,7 +139,7 @@ function Postman({
           Response{" "}
           <span className='text-sm text-gray-400 font-medium'>
             {" "}
-            ({responseTime} s)
+            ({responseTime} ms)
           </span>{" "}
         </h2>
         <span className='text-sm text-gray-400 font-medium block pt-3'>
@@ -163,10 +163,7 @@ function Postman({
         <div className='min-h-[13rem]'>
           {/* Job description */}
           <div className='text-gray-500 space-y-3'>
-            <p>{response}</p>
-            <p className='whitespace-pre-line'>
-              {"안녕하세요 \n 개발자입니다"}
-            </p>
+            <p className='whitespace-pre-line'>{response}</p>
           </div>
         </div>
       </div>
