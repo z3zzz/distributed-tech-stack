@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setBody, setMethod, setUri } from "../states/fieldSlice";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setBody, setPassword, setMethod, setUri } from '../states/fieldSlice';
+import { choices } from '../utils/choices';
 
 function Postman({
   response,
@@ -11,14 +12,15 @@ function Postman({
   scrollRef,
 }) {
   const dispatch = useDispatch();
-  const { method, body } = useSelector((state) => state.field);
+  const { method, password, body } = useSelector((state) => state.field);
 
-  const isBodyRequired = method === "POST" || method === "PUT";
-  const isGet = method === "GET";
-  const isPost = method === "POST";
-  const isPut = method === "PUT";
-  const isDelete = method === "DELETE";
-  const isOk = statusCode.toString().startsWith("2");
+  const isBodyRequired = method === 'POST' || method === 'PUT';
+  const isGet = method === 'GET';
+  const isPost = method === 'POST';
+  const isPut = method === 'PUT';
+  const isDelete = method === 'DELETE';
+  const isPasswordRequired = isPut || isDelete;
+  const isOk = statusCode.toString().startsWith('2');
 
   const onMethodChange = (e) => {
     dispatch(setMethod(e.target.value));
@@ -28,6 +30,10 @@ function Postman({
     dispatch(setUri(e.target.value));
   };
 
+  const onPasswordChange = (e) => {
+    dispatch(setPassword(e.target.value));
+  };
+
   const onBodyChange = (e) => {
     dispatch(setBody(e.target.value));
   };
@@ -35,160 +41,132 @@ function Postman({
   return (
     <>
       {/* Searchbox */}
-      <div className='flex' ref={scrollRef}>
+      <div className="flex" ref={scrollRef}>
         <select
-          className='px-4 py-3 w-32 bg-gray-100 block rounded-l-md border-transparent focus:border-slate-300 focus:bg-white focus:ring-0'
+          className="px-4 py-3 w-32 bg-gray-100 block rounded-l-md border-transparent focus:border-slate-300 focus:bg-white focus:ring-0"
           onChange={onMethodChange}
         >
-          <option value='GET'>GET</option>
-          <option value='POST'>POST</option>
-          <option value='PUT'>PUT</option>
-          <option value='DELETE'>DELETE</option>
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="DELETE">DELETE</option>
         </select>
         <select
-          className='px-4 py-3 flex-1 block bg-gray-100 border-transparent focus:border-slate-300 focus:bg-white focus:ring-0'
+          className="px-4 py-3 flex-1 block bg-gray-100 border-transparent focus:border-slate-300 focus:bg-white focus:ring-0"
           onChange={onUriChange}
         >
           {isGet && (
             <>
-              <option value='/self/introduction'>/저의이야기/자기소개</option>
-              <option value='/self/webtoon'>/저의이야기/좋아하는 웹툰</option>
-              <option value='/self/cartoon'>/저의이야기/좋아하는 만화</option>
-              <option value='/self/whyDeveloperCareer'>
-                /저의이야기/개발자 커리어를 시작한 이유
-              </option>
-              <option value='/self/goodPointOfDeveloper'>
-                /저의이야기/개발자가 되어서 좋은 점
-              </option>
-              <option value='/self/myAbility'>
-                /저의이야기/지니고 있는 능력
-              </option>
-              <option value='/self/effort'>/개발/지금까지 해 온 노력</option>
-              <option value='/self/howToSolveProblem'>
-                /개발/문제를 해결하는 방법
-              </option>
-              <option value='/dev/techStack'>/개발/기술 스택</option>
-              <option value='/dev/architecture'>
-                /개발/본 사이트의 아키텍쳐
-              </option>
+              {choices
+                .filter(({ method }) => method.includes('GET'))
+                .map(({ uri, kor }) => (
+                  <option key={uri} value={uri}>
+                    {kor}
+                  </option>
+                ))}
             </>
           )}
           {isPost && (
             <>
-              <option value='/participate/whyVisit'>
-                /참여/저의 사이트를 방문해 주신 계기
-              </option>
-              <option value='/participate/review'>/참여/방문 후기</option>
-              <option value='/participate/funContent'>
-                /참여/재미있었던 콘텐츠
-              </option>
-              <option value='/participate/question'>
-                /참여/더 궁금한 콘텐츠
-              </option>
+              {choices
+                .filter(({ method }) => method.includes('POST'))
+                .map(({ uri, kor }) => (
+                  <option key={uri} value={uri}>
+                    {kor}
+                  </option>
+                ))}
             </>
           )}
           {isPut && (
             <>
-              <option value='/self/introduction'>/저의이야기/자기소개</option>
-              <option value='/self/webtoon'>/저의이야기/좋아하는 웹툰</option>
-              <option value='/self/cartoon'>/저의이야기/좋아하는 만화</option>
-              <option value='/self/whyDeveloperCareer'>
-                /저의이야기/개발자 커리어를 시작한 이유
-              </option>
-              <option value='/self/goodPointOfDeveloper'>
-                /저의이야기/개발자가 되어서 좋은 점
-              </option>
-              <option value='/self/myAbility'>
-                /저의이야기/지니고 있는 능력
-              </option>
-              <option value='/self/effort'>/개발/지금까지 해 온 노력</option>
-              <option value='/self/howToSolveProblem'>
-                /개발/문제를 해결하는 방법
-              </option>
-              <option value='/dev/techStack'>/개발/기술 스택</option>
-              <option value='/dev/architecture'>
-                /개발/본 사이트의 아키텍쳐
-              </option>
+              {choices
+                .filter(({ method }) => method.includes('PUT'))
+                .map(({ uri, kor }) => (
+                  <option key={uri} value={uri}>
+                    {kor}
+                  </option>
+                ))}
             </>
           )}
           {isDelete && (
             <>
-              <option value='/self/introduction'>/저의이야기/자기소개</option>
-              <option value='/self/webtoon'>/저의이야기/좋아하는 웹툰</option>
-              <option value='/self/cartoon'>/저의이야기/좋아하는 만화</option>
-              <option value='/self/whyDeveloperCareer'>
-                /저의이야기/개발자 커리어를 시작한 이유
-              </option>
-              <option value='/self/goodPointOfDeveloper'>
-                /저의이야기/개발자가 되어서 좋은 점
-              </option>
-              <option value='/self/myAbility'>
-                /저의이야기/지니고 있는 능력
-              </option>
-              <option value='/self/effort'>/개발/지금까지 해 온 노력</option>
-              <option value='/self/howToSolveProblem'>
-                /개발/문제를 해결하는 방법
-              </option>
-              <option value='/dev/techStack'>/개발/기술 스택</option>
-              <option value='/dev/architecture'>
-                /개발/본 사이트의 아키텍쳐
-              </option>
+              {choices
+                .filter(({ method }) => method.includes('DELETE'))
+                .map(({ uri, kor }) => (
+                  <option key={uri} value={uri}>
+                    {kor}
+                  </option>
+                ))}
             </>
           )}
         </select>
         <button
-          className='bg-blue-500 hover:bg-blue-700 block text-white font-bold ml-2 py-2 px-4 rounded-md'
+          className="bg-blue-500 hover:bg-blue-700 block text-white font-bold ml-2 py-2 px-4 rounded-md"
           onClick={onRequestClick}
         >
           Send
         </button>
       </div>
-
+      {/* Password for PATCH, DELETE*/}
+      {isPasswordRequired && (
+        <div>
+          <input
+            id="password"
+            type="password"
+            className="mt-5 block p-1 pl-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-transparent focus:border-slate-300"
+            placeholder="비밀번호가 필요합니다."
+            value={password}
+            onChange={onPasswordChange}
+          />
+        </div>
+      )}
       {/* Textarea for POST, PATCH*/}
       {isBodyRequired && (
         <div>
           <textarea
-            id='message'
-            rows='4'
-            className='mt-5 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-transparent focus:border-slate-300 min-h-[5rem]'
-            placeholder='자유롭게 입력해 주세요.'
+            id="message"
+            rows="4"
+            className="mt-5 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-transparent focus:border-slate-300 min-h-[5rem]"
+            placeholder="자유롭게 입력해 주세요."
             value={body}
             onChange={onBodyChange}
           ></textarea>
         </div>
       )}
-
       {/* Response */}
-      <div className='flex mt-10'>
-        <h2 className='text-3xl font-bold font-inter text-left block flex-1'>
-          Response{" "}
-          <span className='text-sm text-gray-400 font-medium'>
-            {" "}
+      <div className="flex mt-10">
+        <h2 className="text-3xl font-bold font-inter text-left block flex-1">
+          Response{' '}
+          <span className="text-sm text-gray-400 font-medium">
+            {' '}
             ({responseTime} s)
-          </span>{" "}
+          </span>{' '}
         </h2>
-        <span className='text-sm text-gray-400 font-medium block pt-3'>
+        <span className="text-sm text-gray-400 font-medium block pt-3">
           Status: &nbsp;
         </span>
         {isOk && (
-          <span className='text-sm text-green-500 font-medium block pt-3'>
-            {" "}
+          <span className="text-sm text-green-500 font-medium block pt-3">
+            {' '}
             {statusCode} &nbsp;{statusText}
           </span>
         )}
         {!isOk && (
-          <span className='text-sm text-red-500 font-medium block pt-3'>
-            {" "}
+          <span className="text-sm text-red-500 font-medium block pt-3">
+            {' '}
             {statusCode} &nbsp;{statusText}
           </span>
         )}
       </div>
       {/* Main content */}
-      <div className='md:grow mt-4'>
-        <div className='min-h-[13rem]'>
+      <div className="md:grow mt-4">
+        <div className="min-h-[13rem]">
           {/* Job description */}
-          <div className='text-gray-500 space-y-3'>
+          <div className="text-gray-500 space-y-3">
             <p>{response}</p>
+            <p className="whitespace-pre-line">
+              {'안녕하세요 \n 개발자입니다'}
+            </p>
           </div>
         </div>
       </div>

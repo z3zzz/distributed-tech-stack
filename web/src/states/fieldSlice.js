@@ -5,6 +5,7 @@ export const fieldSlice = createSlice({
   initialState: {
     method: 'GET',
     uri: '/self/introduction',
+    password: '',
     body: '',
     language: 'python',
     db: 'pg',
@@ -16,6 +17,9 @@ export const fieldSlice = createSlice({
     },
     setUri: (state, action) => {
       state.uri = action.payload;
+    },
+    setPassword: (state, action) => {
+      state.password = action.payload;
     },
     setBody: (state, action) => {
       state.body = action.payload;
@@ -33,7 +37,14 @@ export const fieldSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setMethod, setUri, setBody, setLanguage, setDb, setServer } =
-  fieldSlice.actions;
+export const {
+  setMethod,
+  setUri,
+  setPassword,
+  setBody,
+  setLanguage,
+  setDb,
+  setServer,
+} = fieldSlice.actions;
 
 export default fieldSlice.reducer;
