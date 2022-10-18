@@ -67,7 +67,7 @@ const sendRequest = async ({
     endpoint = `/api/${server}/${language}/${db}${uri}`;
   }
 
-  console.log({ endpoint, method });
+  console.log({ endpoint });
 
   switch (method) {
     case "GET":

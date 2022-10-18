@@ -23,7 +23,13 @@ function Postman({
   const isOk = statusCode.toString().startsWith("2");
 
   const onMethodChange = (e) => {
-    dispatch(setMethod(e.target.value));
+    const method = e.target.value;
+    const firstChoice = choices.find((choice) =>
+      choice.method.includes(method)
+    );
+
+    dispatch(setMethod(method));
+    dispatch(setUri(firstChoice.uri));
   };
 
   const onUriChange = (e) => {

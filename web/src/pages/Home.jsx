@@ -35,15 +35,11 @@ function Home() {
         server,
       });
 
-      console.log({ res });
-
-      console.log({ data: res.data });
       setResponse(res.data.content);
       setResponseTime(res.responseTime);
       setStatusCode(res.status);
       setStatusText(res.statusText);
     } catch (e) {
-      console.log(e);
       setResponse(
         `요청 중 문제가 발생하였습니다. 
 
