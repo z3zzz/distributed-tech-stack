@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 axios.interceptors.response.use((x) => {
   x.responseTime = new Date().getTime() - x.config.meta.beginTimer;
@@ -14,7 +14,7 @@ async function post(endpoint, data) {
 
   return axios.post(endpoint, bodyData, {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 }
@@ -24,7 +24,7 @@ async function put(endpoint, data) {
 
   return axios.put(endpoint, bodyData, {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 }
@@ -44,17 +44,25 @@ const sendRequest = async ({
   db,
   server,
 }) => {
-  const endpoint = `/api/${server}/${language}/${db}${uri}`;
+  const isDev = import.meta.env.DEV;
+  let endpoint;
+
+  if (isDev) {
+    endpoint = `http://localhost:5000${uri}`;
+  } else {
+    endpoint = `/api/${server}/${language}/${db}${uri}`;
+  }
+
   console.log({ endpoint });
 
   switch (method) {
-    case 'GET':
+    case "GET":
       await get(endpoint);
-    case 'POST':
+    case "POST":
       await post(endpoint, { text: body });
-    case 'PUT':
+    case "PUT":
       await put(endpoint, { text: body, password });
-    case 'DELETE':
+    case "DELETE":
       await del(endpoint, { password });
     default:
       throw new Error(`Unsupported method: ${method}`);
