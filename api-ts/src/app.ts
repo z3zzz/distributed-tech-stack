@@ -8,6 +8,7 @@ import {
   getInformationRoutes,
   putInformationRoutes,
   postInformationRoutes,
+  postParticipateRoutes,
 } from "./routes";
 import { cors, postgres } from "./plugins";
 import { NODE_ENV } from "./constants";
@@ -39,3 +40,4 @@ app.register(putQuestionRoutes);
 app.register(getInformationRoutes);
 app.register(putInformationRoutes);
 app.register(postInformationRoutes);
+app.register(postParticipateRoutes);

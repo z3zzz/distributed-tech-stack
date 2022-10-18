@@ -19,5 +19,11 @@ export {
   PortfolioAttr,
   PortfolioData,
 } from "./portfolios";
+export {
+  ParticipateModel,
+  participateModel,
+  ParticipateAttr,
+  ParticipateData,
+} from "./participates";
 export { initialQuery } from "./initial-query";
 export { cleanupQuery } from "./cleanup-query";

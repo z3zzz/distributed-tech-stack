@@ -6,3 +6,4 @@ export { getQuestionsRoutes } from "./get-questions";
 export { getInformationRoutes } from "./get-information";
 export { putInformationRoutes } from "./put-information";
 export { postInformationRoutes } from "./post-information";
+export { postParticipateRoutes } from "./post-participate";
