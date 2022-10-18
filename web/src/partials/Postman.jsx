@@ -169,7 +169,10 @@ function Postman({
         <div className='min-h-[13rem]'>
           {/* Job description */}
           <div className='text-gray-500 space-y-3'>
-            <p className='whitespace-pre-line'>{response}</p>
+            <p className='whitespace-pre-line'>
+              {response ||
+                "아직 답변이 준비되지 않았습니다. \n곧 업로드가 될 예정입니다 :)"}
+            </p>
           </div>
         </div>
       </div>

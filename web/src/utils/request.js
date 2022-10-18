@@ -46,7 +46,12 @@ async function put(endpoint, data) {
 async function del(endpoint, data) {
   const bodyData = JSON.stringify(data);
 
-  return axios.delete(endpoint, { data: bodyData });
+  return axios.delete(endpoint, {
+    data: bodyData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }
 
 const sendRequest = async ({
