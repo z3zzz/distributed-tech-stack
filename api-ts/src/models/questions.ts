@@ -1,4 +1,4 @@
-import { app } from '../app';
+import { app } from "../app";
 
 export interface Id {
   id: number;
@@ -30,7 +30,7 @@ export class QuestionModel {
 
   async findById(id: string): Promise<QuestionData> {
     const { rows } = await app.pg.query<QuestionData>(
-      'SELECT content FROM questions WHERE id = $1',
+      "SELECT content FROM informations WHERE id = $1",
       [id]
     );
 
@@ -44,12 +44,12 @@ export class QuestionModel {
     content,
   }: QuestionAttr): Promise<{ isCreated: boolean; id: number }> {
     const { rows, rowCount } = await app.pg.query<Id>(
-      'INSERT INTO questions (title, content) VALUES ($1, $2) RETURNING id',
+      "INSERT INTO informations (title, content) VALUES ($1, $2) RETURNING id",
       [title, content]
     );
 
     app.log.info(
-      `question-create: ${rowCount ? 'created' : 'not-created'}, ${title}`
+      `question-create: ${rowCount ? "created" : "not-created"}, ${title}`
     );
 
     const isCreated = rowCount === 1 ? true : false;
@@ -62,7 +62,7 @@ export class QuestionModel {
     offset: number = this.DEFAULT_OFFSET
   ): Promise<QuestionFullData[]> {
     const { rows } = await app.pg.query<QuestionFullData>(
-      'SELECT id, title, content FROM questions LIMIT $1 OFFSET $2',
+      "SELECT id, title, content FROM informations LIMIT $1 OFFSET $2",
       [limit, offset]
     );
 
@@ -74,12 +74,12 @@ export class QuestionModel {
     content,
   }: UpdateQuestionAttr): Promise<{ isUpdated: boolean }> {
     const { rowCount } = await app.pg.query(
-      'UPDATE questions SET content = $1 WHERE id = $2',
+      "UPDATE informations SET content = $1 WHERE id = $2",
       [content, id]
     );
 
     app.log.info(
-      `question-update: ${rowCount ? 'updated' : 'not-updated'}, ${id}`
+      `question-update: ${rowCount ? "updated" : "not-updated"}, ${id}`
     );
 
     const isUpdated = rowCount === 1 ? true : false;
@@ -89,12 +89,12 @@ export class QuestionModel {
 
   async deleteById(id: string): Promise<{ isDeleted: boolean }> {
     const { rowCount } = await app.pg.query(
-      'DELETE FROM tickets WHERE id = $1',
+      "DELETE FROM tickets WHERE id = $1",
       [id]
     );
 
     app.log.info(
-      `ticket-delete: ${rowCount ? 'deleted' : 'not-deleted'}, ${id}`
+      `ticket-delete: ${rowCount ? "deleted" : "not-deleted"}, ${id}`
     );
 
     const isDeleted = rowCount === 1 ? true : false;

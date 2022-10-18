@@ -6,6 +6,18 @@ export {
   QuestionData,
   QuestionFullData,
   Id,
-} from './questions';
-export { initialQuery } from './initial-query';
-export { cleanupQuery } from './cleanup-query';
+} from "./questions";
+export {
+  informationModel,
+  InformationModel,
+  InformationAttr,
+  InformationData,
+} from "./informations";
+export {
+  portfolioModel,
+  PortfolioModel,
+  PortfolioAttr,
+  PortfolioData,
+} from "./portfolios";
+export { initialQuery } from "./initial-query";
+export { cleanupQuery } from "./cleanup-query";

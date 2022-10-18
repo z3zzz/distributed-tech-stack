@@ -1,8 +1,8 @@
-import { app } from './app';
-import { PORT, POSTGRES_URL } from './constants';
-import { initialQuery } from './models';
+import { app } from "./app";
+import { PORT, POSTGRES_URL } from "./constants";
+import { initialQuery } from "./models";
 
-app.listen({ port: PORT, host: '0.0.0.0' }, (err, url) => {
+app.listen({ port: PORT, host: "0.0.0.0" }, (err, url) => {
   // fastify startup
   if (err) {
     app.log.error(err);
@@ -12,6 +12,7 @@ app.listen({ port: PORT, host: '0.0.0.0' }, (err, url) => {
   // postgres connect and create tables (if not exists)
   app.pg.connect((err) => {
     if (err) {
+      app.log.error(err.message);
       app.log.error(`Postgres connection ERROR on ${POSTGRES_URL}`);
       process.exit(1);
     }
