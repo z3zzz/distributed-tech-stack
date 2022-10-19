@@ -2,6 +2,6 @@ FROM node:16-alpine
 WORKDIR /app
 COPY package.json .
 RUN npm install
-RUN mkdir -p node_modules/.vite && chmod -R 777 node_modules/.vite
+RUN mkdir -p node_modules/.vite/deps_temp && chmod -R 777 node_modules/.vite/deps_temp
 COPY . .
 CMD ["npm", "run", "dev"]
