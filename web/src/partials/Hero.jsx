@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 import Illustration from "../images/hero-illustration.svg";
 
-function Hero({ onRequestClick, scrollRef }) {
+function Hero({ onRequestClick, scrollRef, setHasRequested }) {
   const onClick = () => {
-    onRequestClick();
     scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    onRequestClick();
+    setHasRequested(true);
   };
 
   return (

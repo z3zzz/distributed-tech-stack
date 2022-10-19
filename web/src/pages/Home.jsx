@@ -20,6 +20,7 @@ function Home() {
   const [responseTime, setResponseTime] = useState(0);
   const [statusCode, setStatusCode] = useState(200);
   const [statusText, setStatusText] = useState("OK");
+  const [hasRequested, setHasRequested] = useState(false);
 
   const scrollRef = useRef(null);
 
@@ -37,6 +38,7 @@ function Home() {
 
       setResponse(res.data.content);
       setResponseTime(res.responseTime);
+      console.log(res.status);
       setStatusCode(res.status);
       setStatusText(res.statusText);
     } catch (e) {
@@ -71,7 +73,11 @@ function Home() {
       {/*  Page content */}
       <main className='grow'>
         {/*  Page sections */}
-        <Hero onRequestClick={onRequestClick} scrollRef={scrollRef} />
+        <Hero
+          onRequestClick={onRequestClick}
+          scrollRef={scrollRef}
+          setHasRequested={setHasRequested}
+        />
         <PressLogos />
 
         {/*  Page content */}
@@ -90,6 +96,8 @@ function Home() {
                     statusText={statusText}
                     onRequestClick={onRequestClick}
                     scrollRef={scrollRef}
+                    hasRequested={hasRequested}
+                    setHasRequested={setHasRequested}
                   />
 
                   {/* Main content 

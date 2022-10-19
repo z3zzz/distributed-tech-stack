@@ -28,15 +28,15 @@ services:
     volumes:
       - /app/node_modules
       - ./api-ts:/app
-  web:
-    container_name: web
-    build: 
-      context: ./web
-      dockerfile: Dockerfile.dev
-    expose:
-      - 5173
-    volumes:
-      - /app/node_modules
-      - ./web:/app
-    environment:
-      - WDS_SOCKET_PORT=0
+  #web:
+    #container_name: web
+    #build: 
+      #context: ./web
+      #dockerfile: Dockerfile.dev
+    #expose:
+      #- 5173
+    #volumes:
+      #- /app/node_modules
+      #- ./web:/app
+    #environment:
+      #- WDS_SOCKET_PORT=0

@@ -3,5 +3,6 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 RUN mkdir -p node_modules/.vite/deps_temp && chmod -R 777 node_modules/.vite/deps_temp
+RUN mkdir -p node_modules/.vite/deps && chmod -R 777 node_modules/.vite/deps
 COPY . .
 CMD ["npm", "run", "dev"]

@@ -10,10 +10,11 @@ function Postman({
   statusText,
   onRequestClick,
   scrollRef,
+  hasRequested,
+  setHasRequested,
 }) {
   const dispatch = useDispatch();
   const { method, password, body } = useSelector((state) => state.field);
-  const [hasRequested, setHasRequested] = useState(false)
 
   const isBodyRequired = method === "POST" || method === "PUT";
   const isGet = method === "GET";
@@ -46,9 +47,9 @@ function Postman({
   };
 
   const onClick = () => {
-    setHasRequested(true)
-    onRequestClick()
-  }
+    setHasRequested(true);
+    onRequestClick();
+  };
 
   return (
     <>
