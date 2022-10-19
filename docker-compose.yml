@@ -8,6 +8,10 @@ services:
       - api-ts
     ports:
       - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      #- ./nginx/certbot/www:/var/www/certbot
   api-ts:
     container_name: api-ts
     image: kwangdock/portfolio-tech-stack-api-ts
@@ -19,4 +23,4 @@ services:
     container_name: web
     image: kwangdock/portfolio-tech-stack-web
     expose:
-      - 5173
+      - 3000

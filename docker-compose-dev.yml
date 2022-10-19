@@ -3,7 +3,7 @@ services:
     restart: always
     build:
       context: ./nginx
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
       - 3000:80
   postgres:
