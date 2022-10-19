@@ -11,7 +11,7 @@ function JobItem(props) {
       <div className={`px-4 py-6 `}>
         <div className='sm:flex items-center space-y-3 sm:space-y-0 sm:space-x-5'>
           <div className='shrink-0'>
-            <img src={props.image} width='56' height='56' alt={props.name} />
+            <img src={props.image} width='65' height='65' alt={props.name} />
           </div>
           <div className='grow lg:flex items-center justify-between space-y-5 lg:space-x-2 lg:space-y-0'>
             <div>
@@ -33,7 +33,7 @@ function JobItem(props) {
                 </Link>
               </div>
               <div className='flex propss-start space-x-2 mb-3'>
-                <div className='text-sm text-gray-800 font-semibold mb-1'>
+                <div className='text-md text-gray-700 font-medium mb-1'>
                   {props.name}
                 </div>
               </div>

@@ -21,7 +21,18 @@ export async function postParticipateRoutes(
   app: FastifyInstance,
   options: FastifyPluginOptions
 ) {
-  app.post<PostParticipate>("/participate/:type", async (req, res) => {
+  const opts: RouteShorthandOptions = {
+    schema: {
+      body: {
+        type: "object",
+        properties: {
+          content: { type: "string", minLength: 3, maxLength: 500 },
+        },
+      },
+    },
+  };
+
+  app.post<PostParticipate>("/participate/:type", opts, async (req, res) => {
     const { type }: { type: string } = req.params;
     const { content } = req.body;
 
@@ -30,7 +41,7 @@ export async function postParticipateRoutes(
       content,
     });
 
-    res.status(200);
+    res.status(201);
     if (isCreated) {
       return { content: "등록이  완료되었습니다. 감사합니다:)" };
     } else {
