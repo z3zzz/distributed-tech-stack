@@ -13,6 +13,7 @@ function Postman({
 }) {
   const dispatch = useDispatch();
   const { method, password, body } = useSelector((state) => state.field);
+  const [hasRequested, setHasRequested] = useState(false)
 
   const isBodyRequired = method === "POST" || method === "PUT";
   const isGet = method === "GET";
@@ -43,6 +44,11 @@ function Postman({
   const onBodyChange = (e) => {
     dispatch(setBody(e.target.value));
   };
+
+  const onClick = () => {
+    setHasRequested(true)
+    onRequestClick()
+  }
 
   return (
     <>
@@ -108,7 +114,7 @@ function Postman({
         </select>
         <button
           className='bg-blue-500 hover:bg-blue-700 block text-white font-bold ml-2 py-2 px-4 rounded-md'
-          onClick={onRequestClick}
+          onClick={onClick}
         >
           Send
         </button>
@@ -151,13 +157,13 @@ function Postman({
         <span className='text-sm text-gray-400 font-medium block pt-3'>
           Status: &nbsp;
         </span>
-        {isOk && (
+        {hasRequested && isOk && (
           <span className='text-sm text-green-500 font-medium block pt-3'>
             {" "}
             {statusCode} &nbsp;{statusText}
           </span>
         )}
-        {!isOk && (
+        {hasRequested && !isOk && (
           <span className='text-sm text-red-500 font-medium block pt-3'>
             {" "}
             {statusCode} &nbsp;{statusText}
