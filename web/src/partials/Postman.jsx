@@ -12,6 +12,7 @@ function Postman({
   scrollRef,
   hasRequested,
   setHasRequested,
+  isPortfolioRequired,
 }) {
   const dispatch = useDispatch();
   const { method, password, body } = useSelector((state) => state.field);
@@ -21,6 +22,7 @@ function Postman({
   const isPost = method === "POST";
   const isPut = method === "PUT";
   const isDelete = method === "DELETE";
+
   const isPasswordRequired = isPut || isDelete;
   const isOk = statusCode.toString().startsWith("2");
 
@@ -46,9 +48,9 @@ function Postman({
     dispatch(setBody(e.target.value));
   };
 
-  const onClick = () => {
+  const onClick = async () => {
     setHasRequested(true);
-    onRequestClick();
+    await onRequestClick();
   };
 
   return (
@@ -173,15 +175,17 @@ function Postman({
       </div>
       {/* Main content */}
       <div className='md:grow mt-4'>
-        <div className='min-h-[13rem]'>
-          {/* Job description */}
-          <div className='text-gray-500 space-y-3'>
-            <p className='whitespace-pre-line'>
-              {response ||
-                "아직 답변이 준비되지 않았습니다. \n곧 업로드가 될 예정입니다 :)"}
-            </p>
+        {!isPortfolioRequired && (
+          <div className='min-h-[13rem]'>
+            {/* Job description */}
+            <div className='text-gray-500 space-y-3'>
+              <p className='whitespace-pre-line'>
+                {response ||
+                  "아직 답변이 준비되지 않았습니다. \n곧 업로드가 될 예정입니다 :)"}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

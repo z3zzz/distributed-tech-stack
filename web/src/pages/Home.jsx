@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../partials/Header";
 import Hero from "../partials/Hero";
@@ -10,17 +10,23 @@ import Testimonials from "../partials/Testimonials";
 import Footer from "../partials/Footer";
 import Postman from "../partials/Postman";
 import sendRequest from "../utils/request";
+import { setBody } from "../states/fieldSlice";
 
 function Home() {
   const { method, uri, password, body, language, db, server } = useSelector(
     (state) => state.field
   );
 
+  const dispatch = useDispatch();
+
   const [response, setResponse] = useState("Send 버튼을 클릭해 보세요.");
   const [responseTime, setResponseTime] = useState(0);
   const [statusCode, setStatusCode] = useState(200);
   const [statusText, setStatusText] = useState("OK");
   const [hasRequested, setHasRequested] = useState(false);
+
+  const isPortfolioRequired = uri === "/dev/portfolio";
+  const [portfolios, setPortfolios] = useState([]);
 
   const scrollRef = useRef(null);
 
@@ -41,6 +47,14 @@ function Home() {
       console.log(res.status);
       setStatusCode(res.status);
       setStatusText(res.statusText);
+      dispatch(setBody(""));
+
+      if (isPortfolioRequired) {
+        setResponse("POPST 요청은 어떠신가요?");
+        setPortfolios(res.data);
+      } else {
+        setPortfolios([]);
+      }
     } catch (e) {
       setResponse(
         `요청 중 문제가 발생하였습니다. 
@@ -98,10 +112,11 @@ function Home() {
                     scrollRef={scrollRef}
                     hasRequested={hasRequested}
                     setHasRequested={setHasRequested}
+                    isPortfolioRequired={isPortfolioRequired}
                   />
 
+                  {isPortfolioRequired && <JobList portfolios={portfolios} />}
                   {/* Main content 
-                  <JobList />
                   <Testimonials />
 
                   */}
