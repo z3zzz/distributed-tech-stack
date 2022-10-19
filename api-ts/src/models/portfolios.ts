@@ -62,7 +62,7 @@ export class PortfolioModel {
     offset: number = this.DEFAULT_OFFSET
   ): Promise<PortfolioData[]> {
     const { rows } = await app.pg.query<PortfolioData>(
-      'SELECT id, title, content, photosm tech_stack AS "techStack" FROM portfolios LIMIT $1 OFFSET $2',
+      'SELECT id, title, content, photos, tech_stack AS "techStack" FROM portfolios LIMIT $1 OFFSET $2',
       [limit, offset]
     );
 
