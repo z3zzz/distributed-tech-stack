@@ -1,0 +1,28 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install: 
+  - echo "before install -> good"
+
+script:
+  - echo "good good"
+   
+
+deploy:
+  - provider: script
+    on:
+      branch: main
+    script: bash docker-push.sh
+  - provider: elasticbeanstalk
+    on:
+      branch: main
+    region: "ap-northeast-2"
+    app: "portfolio-tech-stack"
+    env: "Portfoliotechstack-env"
+    bucket_name: "elasticbeanstalk-ap-northeast-2-804508095163"
+    bucket_path: "portfolio-tech-stack"
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY

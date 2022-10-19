@@ -16,7 +16,7 @@ function Home() {
     (state) => state.field
   );
 
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState("Send 버튼을 클릭해 보세요.");
   const [responseTime, setResponseTime] = useState(0);
   const [statusCode, setStatusCode] = useState(200);
   const [statusText, setStatusText] = useState("OK");

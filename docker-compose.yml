@@ -1,0 +1,22 @@
+services:
+  nginx:
+    container_name: nginx
+    image: kwangdock/portfolio-tech-stack-nginx
+    restart: always
+    depends_on:
+      - web
+      - api-ts
+    ports:
+      - 80:80
+  api-ts:
+    container_name: api-ts
+    image: kwangdock/portfolio-tech-stack-api-ts
+    expose:
+      - 5000
+    env_file:
+      - .env
+  web:
+    container_name: web
+    image: kwangdock/portfolio-tech-stack-web
+    expose:
+      - 5173
