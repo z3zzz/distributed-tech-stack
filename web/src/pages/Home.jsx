@@ -44,7 +44,6 @@ function Home() {
 
       setResponse(res.data.content);
       setResponseTime(res.responseTime);
-      console.log(res.status);
       setStatusCode(res.status);
       setStatusText(res.statusText);
       dispatch(setBody(""));

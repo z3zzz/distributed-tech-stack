@@ -33,17 +33,23 @@ function JobItem(props) {
                 </Link>
               </div>
               <div className='flex propss-start space-x-2 mb-3'>
-                <div className='text-md text-gray-700 font-medium mb-1'>
+                <div
+                  className='text-sm text-gray-900 font-medium mb-1'
+                  style={{ fontSize: 15 }}
+                >
                   {props.name}
                 </div>
               </div>
               <div className='-m-1'>
-                <a
-                  className={`text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out bg-indigo-50 bg-green-100`}
-                  href='#0'
-                >
-                  {props.tag1}
-                </a>
+                {props.tags.map((tag) => (
+                  <a
+                    key={tag}
+                    className={`text-xs text-gray-500 font-medium inline-flex px-2 py-0.5 hover:text-gray-600 rounded-md m-1 whitespace-nowrap transition duration-150 ease-in-out bg-indigo-50 bg-green-100`}
+                    href='#0'
+                  >
+                    {tag}
+                  </a>
+                ))}
               </div>
             </div>
             <div className='min-w-[120px] flex items-center lg:justify-end space-x-3 lg:space-x-0'>
