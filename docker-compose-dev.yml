@@ -36,6 +36,7 @@ services:
     expose:
       - 5173
     volumes:
+      - /app/node_modules
       - ./web:/app
     environment:
       - WDS_SOCKET_PORT=0
