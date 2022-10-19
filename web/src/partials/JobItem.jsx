@@ -11,14 +11,15 @@ function JobItem(props) {
       <div className={`px-4 py-6 `}>
         <div className='sm:flex items-center space-y-3 sm:space-y-0 sm:space-x-5'>
           <div className='shrink-0'>
-            <img src={props.image} width='65' height='65' alt={props.name} />
+            <img src={props.image} width='60' height='60' alt={props.name} />
           </div>
           <div className='grow lg:flex items-center justify-between space-y-5 lg:space-x-2 lg:space-y-0'>
             <div>
               <div className='mb-2'>
-                <Link
+                <a
                   className='text-lg text-gray-800 font-bold'
-                  to={props.slug}
+                  href={props.slug}
+                  target='_blank'
                 >
                   {props.sticky && (
                     <svg
@@ -30,7 +31,7 @@ function JobItem(props) {
                     </svg>
                   )}
                   {props.title}
-                </Link>
+                </a>
               </div>
               <div className='flex propss-start space-x-2 mb-3'>
                 <div
@@ -54,15 +55,16 @@ function JobItem(props) {
             </div>
             <div className='min-w-[120px] flex items-center lg:justify-end space-x-3 lg:space-x-0'>
               <div className='lg:hidden group-hover:lg:block'>
-                <Link
+                <a
                   className='btn-sm py-1.5 px-3 text-white bg-indigo-500 hover:bg-indigo-600 group shadow-sm'
-                  to={props.slug}
+                  href={props.slug}
+                  target='_blank'
                 >
-                  Apply Now{" "}
+                  깃헙 바로가기{" "}
                   <span className='tracking-normal text-indigo-200 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1'>
                     -&gt;
                   </span>
-                </Link>
+                </a>
               </div>
             </div>
           </div>
