@@ -5,7 +5,7 @@ insert into informations (title, content) values ('self_whydevelopercareer', '')
 insert into informations (title, content) values ('self_goodpointofdeveloper', '');
 insert into informations (title, content) values ('self_myability', '');
 insert into informations (title, content) values ('dev_effort', '');
-insert into informations (title, content) values ('dev_techstack', '');
+insert into informations (title, content) values ('dev_architecture', '');
 
 
 insert into portfolios (title, content, github_link, tech_stack) values (
