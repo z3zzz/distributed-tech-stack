@@ -62,7 +62,7 @@ function Sidebar() {
                   />
                   <label
                     htmlFor='langPython'
-                    className='inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+                    className='inline-flex justify-between items-center p-3  min-w-[75%] text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
                   >
                     <div className='block'>
                       <div className='w-full text-lg font-semibold'>
@@ -83,7 +83,7 @@ function Sidebar() {
                   />
                   <label
                     htmlFor='langJava'
-                    className='inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+                    className='inline-flex justify-between items-center p-3  min-w-[75%] text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
                   >
                     <div className='block'>
                       <div className='w-full text-lg font-semibold'>
@@ -104,7 +104,7 @@ function Sidebar() {
                   />
                   <label
                     htmlFor='langTs'
-                    className='inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+                    className='inline-flex justify-between items-center p-3  min-w-[75%] text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
                   >
                     <div className='block'>
                       <div className='w-full text-lg font-semibold'>
@@ -134,7 +134,7 @@ function Sidebar() {
                   />
                   <label
                     htmlFor='dbPg'
-                    className='inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+                    className='inline-flex justify-between items-center p-3 px-2  min-w-[75%] text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
                   >
                     <div className='block'>
                       <div className='w-full text-lg font-semibold'>
@@ -155,7 +155,7 @@ function Sidebar() {
                   />
                   <label
                     htmlFor='dbMongo'
-                    className='inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+                    className='inline-flex justify-between items-center p-3 min-w-[75%] text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
                   >
                     <div className='block'>
                       <div className='w-full text-lg font-semibold'>
@@ -185,7 +185,7 @@ function Sidebar() {
                   />
                   <label
                     htmlFor='serverApache'
-                    className='inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+                    className='inline-flex justify-between items-center p-3 min-w-[75%] text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
                   >
                     <div className='block'>
                       <div className='w-full text-lg font-semibold'>Apache</div>
@@ -204,10 +204,12 @@ function Sidebar() {
                   />
                   <label
                     htmlFor='serverNginx'
-                    className='inline-flex justify-between items-center p-3 w-9/12 text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+                    className='inline-flex justify-between items-center p-3  min-w-[75%] text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-white-500 peer-checked:border-blue-600 peer-checked:text-blue-600 peer-checked:bg-blue-100 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
                   >
                     <div className='block'>
-                      <div className='w-full text-lg font-semibold'>Nginx</div>
+                      <div className='w-full text-lg font-semibold'>
+                        Nginx&nbsp;
+                      </div>
                     </div>
                   </label>
                 </li>

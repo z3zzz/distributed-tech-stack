@@ -56,9 +56,9 @@ function Postman({
   return (
     <>
       {/* Searchbox */}
-      <div className='flex' ref={scrollRef}>
+      <div className='flex flex-wrap' ref={scrollRef}>
         <select
-          className='px-4 py-3 w-32 bg-gray-100 block rounded-l-md border-transparent focus:border-slate-300 focus:bg-white focus:ring-0'
+          className='px-4 py-3 flex-1 pr-[2rem] sm:flex-none sm:w-32 mb-2 bg-gray-100 block rounded-l-md border-transparent focus:border-slate-300 focus:bg-white focus:ring-0'
           onChange={onMethodChange}
         >
           <option value='GET'>GET</option>
@@ -67,7 +67,7 @@ function Postman({
           <option value='DELETE'>DELETE</option>
         </select>
         <select
-          className='px-4 py-3 flex-1 block bg-gray-100 border-transparent focus:border-slate-300 focus:bg-white focus:ring-0'
+          className='px-4 py-3 pr-[2rem] grow block bg-gray-100 mb-2 border-transparent focus:border-slate-300 focus:bg-white focus:ring-0'
           onChange={onUriChange}
         >
           {isGet && (
@@ -116,7 +116,7 @@ function Postman({
           )}
         </select>
         <button
-          className='bg-blue-500 hover:bg-blue-700 block text-white font-bold ml-2 py-2 px-4 rounded-md'
+          className='bg-blue-500 hover:bg-blue-700 block mb-2 text-white font-bold lg:ml-2 py-2 px-4 rounded-md'
           onClick={onClick}
         >
           Send
@@ -128,7 +128,7 @@ function Postman({
           <input
             id='password'
             type='password'
-            className='mt-5 block p-1 pl-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-transparent focus:border-slate-300'
+            className='mt-3 block p-1 pl-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-transparent focus:border-slate-300'
             placeholder='비밀번호가 필요합니다.'
             value={password}
             onChange={onPasswordChange}
@@ -178,7 +178,7 @@ function Postman({
         {!isPortfolioRequired && (
           <div className='min-h-[13rem]'>
             {/* Job description */}
-            <div className='text-gray-500 space-y-3'>
+            <div className='text-gray-700 space-y-3'>
               <p className='whitespace-pre-line'>
                 {response ||
                   "아직 답변이 준비되지 않았습니다. \n곧 업로드가 될 예정입니다 :)"}
