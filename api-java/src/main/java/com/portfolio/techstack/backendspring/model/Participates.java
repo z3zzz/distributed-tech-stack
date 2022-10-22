@@ -1,25 +1,17 @@
 package com.portfolio.techstack.backendspring.model;
 
-import com.vladmihalcea.hibernate.type.array.ListArrayType;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 import javax.persistence.*;
 
 import java.util.List;
 
 @Entity
-@TypeDef(name="list-array", typeClass = ListArrayType.class)
-public class Informations {
+public class Participates {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String content;
-
-    @Column(columnDefinition = "text[]")
-    @Type(type="list-array")
-    private List<String> photos;
 
     public Long getId() {
         return id;
@@ -43,14 +35,6 @@ public class Informations {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public List<String> getPhotos() {
-      return photos;
-    }
-
-    public void setPhotos(List<String> photos) {
-      this.photos = photos;
     }
 
 }

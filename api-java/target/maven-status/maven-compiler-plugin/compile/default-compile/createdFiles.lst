@@ -1,3 +1,6 @@
 com/portfolio/techstack/backendspring/utils/ContentResponse.class
+com/portfolio/techstack/backendspring/repository/ParticipatesRepository.class
 com/portfolio/techstack/backendspring/model/Portfolios.class
 com/portfolio/techstack/backendspring/repository/PortfoliosRepository.class
+com/portfolio/techstack/backendspring/model/Participates.class
+com/portfolio/techstack/backendspring/controller/ParticipatesController.class
