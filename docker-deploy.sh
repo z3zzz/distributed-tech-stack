@@ -1,4 +1,4 @@
-docker-compose pull &&
-docker-compose stop &&
-docker-compose down &&
-docker-compose up --build;
+docker compose pull &&
+docker compose stop &&
+docker compose rm -f &&
+docker compose up -d;
