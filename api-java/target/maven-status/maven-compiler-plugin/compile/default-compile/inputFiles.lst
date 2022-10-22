@@ -1,0 +1,7 @@
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/controller/InformationController.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/exception/InformationNotFoundAdvice.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/BackendSpringApplication.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/model/Informations.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/InformationRepository.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/exception/InformationNotFoundException.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/utils/ContentResponse.java

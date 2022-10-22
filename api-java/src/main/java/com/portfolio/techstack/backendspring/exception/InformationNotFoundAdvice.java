@@ -17,7 +17,7 @@ public class InformationNotFoundAdvice {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> exceptionHandler(InformationNotFoundException exception) {
         Map<String, String> errorMap=new HashMap<>();
-        errorMap.put("Not found!!", exception.getMessage());
+        errorMap.put("Not found..", exception.getMessage());
 
         return errorMap;
     }
