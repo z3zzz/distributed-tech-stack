@@ -12,3 +12,7 @@ docker push kwangdock/portfolio-tech-stack-api-ts
 # build and push nginx
 docker build -t kwangdock/portfolio-tech-stack-nginx ./nginx && 
 docker push kwangdock/portfolio-tech-stack-nginx
+
+# build and push api-java
+docker build -t kwangdock/portfolio-tech-stack-api-java ./api-java && 
+docker push kwangdock/portfolio-tech-stack-api-java
