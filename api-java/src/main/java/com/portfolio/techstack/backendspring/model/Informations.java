@@ -1,11 +1,14 @@
 package com.portfolio.techstack.backendspring.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.vladmihalcea.hibernate.type.array.ListArrayType;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import javax.persistence.*;
+
+import java.util.List;
 
 @Entity
+@TypeDef(name="list-array", typeClass = ListArrayType.class)
 public class Informations {
 
     @Id
@@ -14,6 +17,9 @@ public class Informations {
     private String title;
     private String content;
 
+    @Column(columnDefinition = "text[]")
+    @Type(type="list-array")
+    private List<String> photos;
 
     public Long getId() {
         return id;
@@ -39,5 +45,12 @@ public class Informations {
         this.content = content;
     }
 
+    public List<String> getPhotos() {
+      return photos;
+    }
+
+    public void setPhotos(List<String> photos) {
+      this.photos = photos;
+    }
 
 }
