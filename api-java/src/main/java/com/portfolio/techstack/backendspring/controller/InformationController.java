@@ -5,6 +5,7 @@ import com.portfolio.techstack.backendspring.model.Portfolios;
 import com.portfolio.techstack.backendspring.repository.InformationRepository;
 import com.portfolio.techstack.backendspring.repository.PortfoliosRepository;
 import com.portfolio.techstack.backendspring.utils.ContentResponse;
+import com.portfolio.techstack.backendspring.utils.PutDeletePassword;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -81,7 +82,13 @@ public class InformationController {
     }
 
     @PutMapping("/self/{type}")
-    ContentResponse updateSelf(@RequestBody Informations newInformation, @PathVariable String type) {
+    ContentResponse updateSelf(@RequestBody PutDeletePassword newInformation, @PathVariable String type) {
+        String password = newInformation.getPassword();
+        String correctPassword = System.getenv("MY_PASSWORD");
+
+        if (!password.equals(correctPassword))
+            return new ContentResponse("비밀번호가 일치하지 않습니다.");
+
         String title = "self_" + type.toLowerCase();  
         Informations information = informationRepository.findByTitle(title)
                                     .orElseThrow(() -> new InformationNotFoundException(title));
@@ -98,11 +105,17 @@ public class InformationController {
     }
 
     @PutMapping("/dev/{type}")
-    ContentResponse updateDev(@RequestBody Informations newInformation, @PathVariable String type) {
+    ContentResponse updateDev(@RequestBody PutDeletePassword newInformation, @PathVariable String type) {
+        String password = newInformation.getPassword();
+        String correctPassword = System.getenv("MY_PASSWORD");
+
+        if (!password.equals(correctPassword))
+            return new ContentResponse("비밀번호가 일치하지 않습니다.");
+
         if (type == "portfolio")
           return new ContentResponse("포트폴리오는 수정이 불가합니다.");
 
-        String title = "self_" + type.toLowerCase();  
+        String title = "dev_" + type.toLowerCase();  
         Informations information = informationRepository.findByTitle(title)
                                     .orElseThrow(() -> new InformationNotFoundException(title));
 
@@ -118,7 +131,13 @@ public class InformationController {
     }
 
     @DeleteMapping("/self/{type}")
-    ContentResponse deleteSelf(@PathVariable String type) {
+    ContentResponse deleteSelf(@PathVariable String type, @RequestBody PutDeletePassword passwordInput) {
+        String password = passwordInput.getPassword();
+        String correctPassword = System.getenv("MY_PASSWORD");
+
+        if (!password.equals(correctPassword))
+            return new ContentResponse("비밀번호가 일치하지 않습니다.");
+
         String title = "self_" + type.toLowerCase();  
         long deletedCount = informationRepository.deleteByTitle(title);
 
@@ -129,8 +148,14 @@ public class InformationController {
     }
 
     @DeleteMapping("/dev/{type}")
-    ContentResponse deleteDev(@PathVariable String type) {
-        String title = "self_" + type.toLowerCase();  
+    ContentResponse deleteDev(@PathVariable String type, @RequestBody PutDeletePassword passwordInput) {
+        String password = passwordInput.getPassword();
+        String correctPassword = System.getenv("MY_PASSWORD");
+
+        if (!password.equals(correctPassword))
+            return new ContentResponse("비밀번호가 일치하지 않습니다.");
+
+        String title = "dev_" + type.toLowerCase();  
         long deletedCount = informationRepository.deleteByTitle(title);
 
         if (deletedCount == 0) 
