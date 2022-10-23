@@ -37,7 +37,7 @@ export async function postParticipateRoutes(
     const { content } = req.body;
 
     const { isCreated } = await participateModel.create({
-      title: `self_${type.toLowerCase()}`,
+      title: type.toLowerCase(),
       content,
     });
 

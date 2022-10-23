@@ -28,15 +28,20 @@ services:
     volumes:
       - /app/node_modules
       - ./api-ts:/app
-  #web:
-    #container_name: web
-    #build: 
-      #context: ./web
-      #dockerfile: Dockerfile.dev
-    #expose:
-      #- 5173
-    #volumes:
-      #- /app/node_modules
-      #- ./web:/app
-    #environment:
-      #- WDS_SOCKET_PORT=0
+  api-java:
+    container_name: api-java
+    build: 
+      context: ./api-java
+      dockerfile: Dockerfile.dev
+    expose:
+      - 8080
+    environment:
+      - DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+      - DATASOURCE_USERNAME=postgres
+      - DATASOURCE_PASSWORD=1234
+  web:
+    container_name: web
+    image: kwangdock/portfolio-tech-stack-web
+    expose:
+      - 3000
+

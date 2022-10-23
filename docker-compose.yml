@@ -25,6 +25,13 @@ services:
       - 5000
     env_file:
       - .env
+  api-java:
+    container_name: api-java
+    image: kwangdock/portfolio-tech-stack-api-java
+    expose:
+      - 8080
+    env_file:
+      - .env
   web:
     container_name: web
     image: kwangdock/portfolio-tech-stack-web
