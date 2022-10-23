@@ -67,9 +67,10 @@ const sendRequest = async ({
   let endpoint;
 
   if (isDev) {
-    endpoint = `http://localhost:5000${uri}`;
+    endpoint = `http://localhost:8080${uri}`;
+    console.log(`/api/${language}/${server}${uri}/${db}`);
   } else {
-    endpoint = `/api/${server}/${language}/${db}${uri}`;
+    endpoint = `/api/${language}/${server}${uri}/${db}`;
   }
 
   console.log({ endpoint });
