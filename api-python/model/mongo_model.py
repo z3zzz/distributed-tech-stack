@@ -3,21 +3,20 @@ from pymongo import MongoClient
 
 client = MongoClient(os.environ["MONGODB_URL"])
 db = client.portfolio
-col = client.portfolio
+col = db.portfolio
 
 class MongoModel:
     def get_information(self, title):
-        result = col.find_one({"title": title})
-        print(result)
+        return col.find_one({"title": title}, {'_id': False, 'content': True})
 
-        return result
-    
     def update_information(self, title, content):
-        return
+        col.update_one({"title": title}, {"content": content})
 
     def delete_information(self, title):
-        return
+        col.delete_one({"title": title})
 
     def get_portfolios(self):
-        return
+        return col.find_many({"group": "portfolios"}, {"_id": False})
 
+    def add_participate(self, title, content):
+        col.insert_one({"title": title, "content": content, "count": 0, "group": "participates" })

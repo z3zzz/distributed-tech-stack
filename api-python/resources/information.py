@@ -1,7 +1,7 @@
 import os
 from flask import request, Blueprint
 from flask_restful import Api, Resource, reqparse
-from model import PgModel, get_model
+from model import model
 
 api_bp_informaton = Blueprint('api_informaton', __name__)
 api_information = Api(api_bp_informaton)
@@ -19,15 +19,10 @@ body_parser.add_argument(
 
 
 class SelfInformation(Resource):
-    def __init__(self):
-        self.pg_model = PgModel()
-
     def get(self, stype, db):
         title = f"self_{stype.lower()}"
 
-        model = get_model(db)
-
-        return model.get_information(title)
+        return model.get_information(title, db)
 
     def put(self, stype):
         args = body_parser.parse_args()
@@ -38,7 +33,7 @@ class SelfInformation(Resource):
         title = f"self_{stype.lower()}"
         content = args.content
 
-        self.pg_model.update_information(title, content)
+        model.update_information(title, content, db)
         
         return {"content": "수정이 완료되었습니다."}
 
@@ -51,23 +46,20 @@ class SelfInformation(Resource):
         title = f"self_{stype.lower()}"
         content = args.content
 
-        self.pg_model.delete_information(title)
+        model.delete_information(title, db)
         
         return {"content": "삭제가 완료되었습니다."}
 
 class DevInformation(Resource):
-    def __init__(self):
-        self.pg_model = PgModel()
-
-    def get(self, stype):
+    def get(self, stype, db):
         if stype == "portfolio":
-            return self.pg_model.get_portfolios()
+            return model.get_portfolios(db)
 
         title = f"dev_{stype.lower()}"
 
-        return self.pg_model.get_information(title)
+        return model.get_information(title, db)
 
-    def put(self, stype):
+    def put(self, stype, db):
         if stype == "portfolio":
             return {"content": "포트폴리오는 put 수정이 불가합니다."}
         args = body_parser.parse_args()
@@ -78,11 +70,11 @@ class DevInformation(Resource):
         title = f"dev_{stype.lower()}"
         content = args.content
 
-        self.pg_model.update_information(title, content)
+        model.update_information(title, content, db)
         
         return {"content": "수정이 완료되었습니다."}
 
-    def delete(self, stype):
+    def delete(self, stype, db):
         if stype == "portfolio":
             return {"content": "포트폴리오는 delete 수정이 불가합니다."}
         args = body_parser.parse_args()
@@ -92,10 +84,10 @@ class DevInformation(Resource):
         
         title = f"dev_{stype.lower()}"
 
-        self.pg_model.delete_information(title)
+        model.delete_information(title, db)
         
         return {"content": "삭제가 완료되었습니다."}
 
 
 api_information.add_resource(SelfInformation, "/self/<string:stype>/<string:db>")
-api_information.add_resource(DevInformation, "/dev/<string:stype>")
+api_information.add_resource(DevInformation, "/dev/<string:stype>/<string:db>")

@@ -1,8 +1,5 @@
 from .pg_model import PgModel
 from .mongo_model import MongoModel
+from .model import Model
 
-def get_model(db_type):
-    if db_type == "pg":
-        return PgModel()
-    if db_type == "mongodb":
-        return MongoModel()
+model = Model(PgModel(), MongoModel())
