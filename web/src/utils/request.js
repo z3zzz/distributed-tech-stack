@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 axios.interceptors.request.use((x) => {
   // to avoid overwriting if another interceptor
@@ -28,7 +28,7 @@ async function post(endpoint, data) {
 
   return axios.post(endpoint, bodyData, {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 }
@@ -38,7 +38,7 @@ async function put(endpoint, data) {
 
   return axios.put(endpoint, bodyData, {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 }
@@ -49,7 +49,7 @@ async function del(endpoint, data) {
   return axios.delete(endpoint, {
     data: bodyData,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 }
@@ -67,7 +67,7 @@ const sendRequest = async ({
   let endpoint;
 
   if (isDev) {
-    endpoint = `http://localhost:8080${uri}`;
+    endpoint = `http://localhost:5000${uri}/${db}`;
     console.log(`/api/${language}/${server}${uri}/${db}`);
   } else {
     endpoint = `/api/${language}/${server}${uri}/${db}`;
@@ -76,13 +76,13 @@ const sendRequest = async ({
   console.log({ endpoint });
 
   switch (method) {
-    case "GET":
+    case 'GET':
       return get(endpoint);
-    case "POST":
+    case 'POST':
       return post(endpoint, { content: body });
-    case "PUT":
+    case 'PUT':
       return put(endpoint, { content: body, password });
-    case "DELETE":
+    case 'DELETE':
       return del(endpoint, { password });
     default:
       throw new Error(`Unsupported method: ${method}`);

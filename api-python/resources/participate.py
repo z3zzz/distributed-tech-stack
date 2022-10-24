@@ -1,6 +1,6 @@
 from flask import request, Blueprint
 from flask_restful import Api, Resource, reqparse
-from model import PgDatabase
+from model import PgModel
 
 api_bp_participate = Blueprint('api_participate', __name__)
 api_participate = Api(api_bp_participate)
@@ -12,6 +12,9 @@ body_parser.add_argument(
 )
 
 class Participate(Resource):
+    def __init__(self):
+        self.pg_model = PgModel()
+
     def post(self, stype):
         title = stype.lower()
         args = body_parser.parse_args()
@@ -20,13 +23,9 @@ class Participate(Resource):
         if len(content) < 3:
             return {"content": "조금만 더 길게, 3글자 이상 작성해 주세요 :)"}
 
-        with PgDatabase() as db:
-            db.execute("""
-                INSERT INTO participates (title, content)
-                VALUES (%s, %s);
-                    """, (title, content))
+        self.pg_model.add_participate(title, content)
         
-        return {"content": "등록이 완료되었습니다. 감사합니다 :)"}
+        return {"content": "등록이 완료되었습니다. 감사합니다 :)"}, 201
 
 
 api_participate.add_resource(Participate, "/participate/<string:stype>")

@@ -1,7 +1,7 @@
 import os
 from flask import request, Blueprint
 from flask_restful import Api, Resource, reqparse
-from model import PgDatabase
+from model import PgModel, get_model
 
 api_bp_informaton = Blueprint('api_informaton', __name__)
 api_information = Api(api_bp_informaton)
@@ -19,13 +19,15 @@ body_parser.add_argument(
 
 
 class SelfInformation(Resource):
-    def get(self, stype):
+    def __init__(self):
+        self.pg_model = PgModel()
+
+    def get(self, stype, db):
         title = f"self_{stype.lower()}"
-        with PgDatabase() as db:
-            db.execute("SELECT content FROM informations WHERE title = %s", (title,))
-            result = db.fetchone()
-        
-        return result
+
+        model = get_model(db)
+
+        return model.get_information(title)
 
     def put(self, stype):
         args = body_parser.parse_args()
@@ -36,9 +38,7 @@ class SelfInformation(Resource):
         title = f"self_{stype.lower()}"
         content = args.content
 
-        with PgDatabase() as db:
-            db.execute("UPDATE informations SET content = %s WHERE title = %s", 
-                    (content, title))
+        self.pg_model.update_information(title, content)
         
         return {"content": "수정이 완료되었습니다."}
 
@@ -51,28 +51,21 @@ class SelfInformation(Resource):
         title = f"self_{stype.lower()}"
         content = args.content
 
-        with PgDatabase() as db:
-            db.execute("DELETE FROM informations WHERE title = %s", 
-                    (title,))
+        self.pg_model.delete_information(title)
         
         return {"content": "삭제가 완료되었습니다."}
 
 class DevInformation(Resource):
+    def __init__(self):
+        self.pg_model = PgModel()
+
     def get(self, stype):
         if stype == "portfolio":
-            with PgDatabase() as db:
-                db.execute('SELECT id, title, content, github_link AS "githubLink", tech_stack AS "techStack" FROM portfolios')
-                result = db.fetchall()
-
-            return result
+            return self.pg_model.get_portfolios()
 
         title = f"dev_{stype.lower()}"
 
-        with PgDatabase() as db:
-            db.execute("SELECT content FROM informations WHERE title = %s", (title,))
-            result = db.fetchone()
-        
-        return result
+        return self.pg_model.get_information(title)
 
     def put(self, stype):
         if stype == "portfolio":
@@ -85,9 +78,7 @@ class DevInformation(Resource):
         title = f"dev_{stype.lower()}"
         content = args.content
 
-        with PgDatabase() as db:
-            db.execute("UPDATE informations SET content = %s WHERE title = %s", 
-                    (content, title))
+        self.pg_model.update_information(title, content)
         
         return {"content": "수정이 완료되었습니다."}
 
@@ -101,12 +92,10 @@ class DevInformation(Resource):
         
         title = f"dev_{stype.lower()}"
 
-        with PgDatabase() as db:
-            db.execute("DELETE FROM informations WHERE title = %s", 
-                    (title,))
+        self.pg_model.delete_information(title)
         
         return {"content": "삭제가 완료되었습니다."}
 
 
-api_information.add_resource(SelfInformation, "/self/<string:stype>")
+api_information.add_resource(SelfInformation, "/self/<string:stype>/<string:db>")
 api_information.add_resource(DevInformation, "/dev/<string:stype>")
