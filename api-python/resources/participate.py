@@ -17,6 +17,9 @@ class Participate(Resource):
         args = body_parser.parse_args()
         content = args.content
 
+        if len(content) < 3:
+            return {"content": "조금만 더 길게, 3글자 이상 작성해 주세요 :)"}
+
         with PgDatabase() as db:
             db.execute("""
                 INSERT INTO participates (title, content)
