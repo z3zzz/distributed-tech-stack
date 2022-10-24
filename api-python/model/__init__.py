@@ -1,1 +1,1 @@
-from .information_model import PgDatabase 
+from .pg_model import PgDatabase 
