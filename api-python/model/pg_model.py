@@ -9,6 +9,12 @@ class PgModel:
             result = db.fetchone()
         return result
     
+    def get_informations(self):
+        with PgDatabase() as db:
+            db.execute("SELECT title, content FROM informations")
+            result = db.fetchall()
+        return result
+    
     def update_information(self, title, content):
         with PgDatabase() as db:
             db.execute("UPDATE informations SET content = %s WHERE title = %s", 
@@ -24,6 +30,8 @@ class PgModel:
             db.execute('SELECT id, title, content, github_link AS "githubLink", tech_stack AS "techStack" FROM portfolios')
             result = db.fetchall()
 
+        return result
+
     def add_participate(self, title, content):
         with PgDatabase() as db:
             db.execute("""
@@ -34,7 +42,7 @@ class PgModel:
 class PgDatabase:
     def __init__(self):
         self._conn = psycopg2.connect(
-            host="localhost",
+            host=os.environ['DB_HOST'],
             database=os.environ['DB_DATABASE'],
             user=os.environ['DB_USERNAME'],
             password=os.environ['DB_PASSWORD']

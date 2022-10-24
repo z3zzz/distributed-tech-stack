@@ -6,3 +6,4 @@
 .env
 certbot/
 db/
+__pycache__/
