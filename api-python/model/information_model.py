@@ -1,5 +1,6 @@
 import os
 import psycopg2
+from psycopg2.extras import RealDictCursor
 
 class PgDatabase:
     def __init__(self):
@@ -9,7 +10,7 @@ class PgDatabase:
             user=os.environ['DB_USERNAME'],
             password=os.environ['DB_PASSWORD']
             )
-        self._cursor = self._conn.cursor()
+        self._cursor = self._conn.cursor(cursor_factory=RealDictCursor)
 
     def __enter__(self):
         return self
