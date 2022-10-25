@@ -8,12 +8,14 @@ import {
   informationModel,
   PortfolioData,
   portfolioModel,
+  model,
 } from "../models";
 import { PASSWORD } from "../constants";
 
 interface DeleteInformation {
   Params: {
     type: string;
+    db: string;
   };
   Body: {
     password: string;
@@ -27,8 +29,8 @@ export async function deleteInformationRoutes(
   app: FastifyInstance,
   options: FastifyPluginOptions
 ) {
-  app.delete<DeleteInformation>("/self/:type", async (req, res) => {
-    const { type }: { type: string } = req.params;
+  app.delete<DeleteInformation>("/self/:type/:db", async (req, res) => {
+    const { type, db }: { type: string; db: string } = req.params;
     const { password } = req.body;
 
     if (password !== PASSWORD) {
@@ -37,8 +39,9 @@ export async function deleteInformationRoutes(
       throw new Error("비밀번호가 일치하지 않습니다.");
     }
 
-    const { isDeleted } = await informationModel.deleteByTitle(
-      `self_${type.toLowerCase()}`
+    const { isDeleted } = await model.deleteByTitle(
+      `self_${type.toLowerCase()}`,
+      db
     );
 
     res.status(200);
@@ -50,8 +53,8 @@ export async function deleteInformationRoutes(
     }
   });
 
-  app.delete<DeleteInformation>("/dev/:type", async (req, res) => {
-    const { type }: { type: string } = req.params;
+  app.delete<DeleteInformation>("/dev/:type/:db", async (req, res) => {
+    const { type, db }: { type: string; db: string } = req.params;
     const { password } = req.body;
     let isDeleted: boolean;
 
@@ -68,8 +71,9 @@ export async function deleteInformationRoutes(
 
       isDeleted = result;
     } else {
-      const { isDeleted: result } = await informationModel.deleteByTitle(
-        `self_${type.toLowerCase()}`
+      const { isDeleted: result } = await model.deleteByTitle(
+        `self_${type.toLowerCase()}`,
+        db
       );
 
       isDeleted = result;

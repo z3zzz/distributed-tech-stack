@@ -2,18 +2,20 @@ import {
   FastifyInstance,
   FastifyPluginOptions,
   RouteShorthandOptions,
-} from 'fastify';
+} from "fastify";
 import {
   InformationData,
   informationModel,
   PortfolioData,
   portfolioModel,
-} from '../models';
-import { PASSWORD } from '../constants';
+  model,
+} from "../models";
+import { PASSWORD } from "../constants";
 
 interface PutInformation {
   Params: {
     type: string;
+    db: string;
   };
   Body: {
     title: string;
@@ -34,52 +36,53 @@ export async function putInformationRoutes(
   const opts: RouteShorthandOptions = {
     schema: {
       body: {
-        type: 'object',
+        type: "object",
         properties: {
-          content: { type: 'string', minLength: 3 },
+          content: { type: "string", minLength: 3 },
         },
       },
     },
   };
 
-  app.put<PutInformation>('/self/:type', opts, async (req, res) => {
-    const { type }: { type: string } = req.params;
+  app.put<PutInformation>("/self/:type/:db", opts, async (req, res) => {
+    const { type, db }: { type: string; db: string } = req.params;
     const { content, password, photos } = req.body;
 
     if (password !== PASSWORD) {
       res.status(400);
-      throw new Error('비밀번호가 일치하지 않습니다.');
+      throw new Error("비밀번호가 일치하지 않습니다.");
     }
 
     app.log.info(content);
-    const { isUpdated } = await informationModel.update({
+    const { isUpdated } = await model.update({
       title: `self_${type.toLowerCase()}`,
       content,
       photos,
+      db,
     });
 
     res.status(200);
 
     if (isUpdated) {
-      return { content: '수정이 완료되었습니다.' };
+      return { content: "수정이 완료되었습니다." };
     } else {
-      return { content: '수정에 실패하였습니다.' };
+      return { content: "수정에 실패하였습니다." };
     }
   });
 
-  app.put<PutInformation>('/dev/:type', async (req, res) => {
-    const { type }: { type: string } = req.params;
+  app.put<PutInformation>("/dev/:type/:db", async (req, res) => {
+    const { type, db }: { type: string; db: string } = req.params;
     const { content, password, photos, techStack } = req.body;
     let isUpdated: boolean;
 
     if (password !== PASSWORD) {
       res.status(400);
-      throw new Error('비밀번호가 일치하지 않습니다.');
+      throw new Error("비밀번호가 일치하지 않습니다.");
     }
 
     const title = `dev_${type.toLowerCase()}`;
 
-    if (type === 'portfolio') {
+    if (type === "portfolio") {
       const { isUpdated: result } = await portfolioModel.update({
         title,
         content,
@@ -89,10 +92,11 @@ export async function putInformationRoutes(
 
       isUpdated = result;
     } else {
-      const { isUpdated: result } = await informationModel.update({
+      const { isUpdated: result } = await model.update({
         title,
         content,
         photos,
+        db,
       });
 
       isUpdated = result;
@@ -100,9 +104,9 @@ export async function putInformationRoutes(
 
     res.status(200);
     if (isUpdated) {
-      return { content: '수정이 완료되었습니다.' };
+      return { content: "수정이 완료되었습니다." };
     } else {
-      return { content: '수정에 실패하였습니다.' };
+      return { content: "수정에 실패하였습니다." };
     }
   });
 }

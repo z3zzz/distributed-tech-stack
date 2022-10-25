@@ -1,5 +1,5 @@
 import { app } from "./app";
-import { PORT, POSTGRES_URL } from "./constants";
+import { MONGODB_TS_URL, PORT, POSTGRES_URL } from "./constants";
 import { initialQuery } from "./models";
 
 app.listen({ port: PORT, host: "0.0.0.0" }, (err, url) => {
@@ -18,6 +18,7 @@ app.listen({ port: PORT, host: "0.0.0.0" }, (err, url) => {
     }
 
     app.log.info(`Postgres connected at ${POSTGRES_URL}`);
+    app.log.info(`MongoDB connected at ${MONGODB_TS_URL}`);
 
     app.pg.query(initialQuery, (err) => {
       if (err) {

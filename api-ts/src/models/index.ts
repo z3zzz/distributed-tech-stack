@@ -27,3 +27,5 @@ export {
 } from "./participates";
 export { initialQuery } from "./initial-query";
 export { cleanupQuery } from "./cleanup-query";
+export { informationMongodbModel } from "./informations-mongodb";
+export { model } from "./model";

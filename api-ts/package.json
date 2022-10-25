@@ -15,6 +15,7 @@
     "@fastify/cors": "^8.0.0",
     "@fastify/formbody": "^7.3.0",
     "@fastify/jwt": "^6.3.1",
+    "@fastify/mongodb": "^6.1.0",
     "@fastify/postgres": "^5.0.0",
     "@kwangtickets/common": "^1.1.4",
     "axios": "^0.27.2",

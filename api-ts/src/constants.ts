@@ -5,3 +5,5 @@ export const POSTGRES_URL =
 export const DOMAIN = process.env.DOMAIN || "localhost";
 export const NODE_ENV = process.env.NODE_ENV;
 export const PASSWORD = process.env.MY_PASSWORD;
+export const MONGODB_TS_URL = process.env.MONGODB_TS_URL;
+export const MONGODB_COLLECTION = process.env.MONGODB_COLLECTION;

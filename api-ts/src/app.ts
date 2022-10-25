@@ -11,7 +11,7 @@ import {
   postParticipateRoutes,
   deleteInformationRoutes,
 } from "./routes";
-import { cors, postgres } from "./plugins";
+import { cors, mongodb, postgres } from "./plugins";
 import { NODE_ENV } from "./constants";
 
 // main
@@ -31,6 +31,7 @@ export const app = Fastify({
 // plugins
 app.register(cors);
 app.register(postgres);
+app.register(mongodb);
 
 // routes
 app.register(greetingRoutes);
