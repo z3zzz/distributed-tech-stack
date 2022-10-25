@@ -19,13 +19,14 @@ class MongoModel:
         col.delete_one({"title": title})
 
     def get_portfolios(self):
-        return col.find_many({"group": "portfolios"}, {"_id": False})
+        return list(col.find({"group": "portfolios"}, {"_id": False}))
 
     def add_portfolios(self, id, title, content, github_link, tech_stack):
         return col.insert_one({
             "group": "portfolios", 
             "id": id, 
             "title": title, 
+            "content": content,
             "githubLink": github_link, 
             "techStack": tech_stack})
 

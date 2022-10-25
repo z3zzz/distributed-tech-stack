@@ -24,7 +24,7 @@ class SelfInformation(Resource):
 
         return model.get_information(title, db)
 
-    def put(self, stype):
+    def put(self, stype, db):
         args = body_parser.parse_args()
             
         if args.password != correct_password:
@@ -37,7 +37,7 @@ class SelfInformation(Resource):
         
         return {"content": "수정이 완료되었습니다."}
 
-    def delete(self, stype):
+    def delete(self, stype, db):
         args = body_parser.parse_args()
             
         if args.password != correct_password:

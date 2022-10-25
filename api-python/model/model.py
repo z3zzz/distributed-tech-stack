@@ -1,5 +1,5 @@
-from mongo_model import MongoModel
-from pg_model import PgModel
+from .mongo_model import MongoModel
+from .pg_model import PgModel
 
 class Model:
     def __init__(self, pg_model, mongo_model):
@@ -8,11 +8,11 @@ class Model:
                     "mongodb": mongo_model
                 }
 
-    def model(db_type):
+    def model(self, db_type):
         return self.models[db_type]
 
-    def get_information(self, title, content, db_type):
-        return self.model(db_type).get_information(title, content)
+    def get_information(self, title, db_type):
+        return self.model(db_type).get_information(title)
     
     def update_information(self, title, content, db_type):
         return self.model(db_type).update_information(title, content)
