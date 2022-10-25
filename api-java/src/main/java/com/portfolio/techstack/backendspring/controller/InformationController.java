@@ -4,6 +4,7 @@ import com.portfolio.techstack.backendspring.model.Informations;
 import com.portfolio.techstack.backendspring.model.Portfolios;
 import com.portfolio.techstack.backendspring.repository.InformationRepository;
 import com.portfolio.techstack.backendspring.repository.PortfoliosRepository;
+import com.portfolio.techstack.backendspring.repository.InformationPgRepository;
 import com.portfolio.techstack.backendspring.utils.ContentResponse;
 import com.portfolio.techstack.backendspring.utils.PutDeletePassword;
 
@@ -17,17 +18,19 @@ import java.util.List;
 public class InformationController {
 
     @Autowired
-    private InformationRepository informationRepository;
+    private InformationPgRepository informationPgRepository;
 
     @Autowired
     private PortfoliosRepository portfoliosRepository;
+
+    @Autowired
+    private InformationRepository informationRepository;
 
     @GetMapping("/self/{type}/{db}")
     Informations oneSelf(@PathVariable String type, @PathVariable String db){
         String title = "self_" + type.toLowerCase();  
 
-        return informationRepository.findByTitle(title)
-                .orElseThrow(() -> new InformationNotFoundException(title));
+        return informationRepository.findByTitle(title, db);
     }
 
     @GetMapping("/dev/portfolio/{db}")
@@ -39,7 +42,7 @@ public class InformationController {
     Informations oneDev(@PathVariable String type, @PathVariable String db){
         String title = "dev_" + type.toLowerCase();  
 
-        return informationRepository.findByTitle(title)
+        return informationPgRepository.findByTitle(title)
                 .orElseThrow(() -> new InformationNotFoundException(title));
     }
 
@@ -49,7 +52,7 @@ public class InformationController {
         information.setTitle(title);
         
         try {
-            informationRepository.save(information);
+            informationPgRepository.save(information);
 
             return ResponseEntity.status(201).body(new ContentResponse("등록이 완료되었습니다. 감사합니다 :)"));
         } catch (Exception e) {
@@ -63,7 +66,7 @@ public class InformationController {
         information.setTitle(title);
         
         try {
-            informationRepository.save(information);
+            informationPgRepository.save(information);
 
             return ResponseEntity.status(201).body(new ContentResponse("등록이 완료되었습니다. 감사합니다 :)"));
         } catch (Exception e) {
@@ -73,12 +76,12 @@ public class InformationController {
 
     @GetMapping("/self")
     List<Informations> allSelf() {
-        return informationRepository.findAll();
+        return informationPgRepository.findAll();
     }
 
     @GetMapping("/dev")
     List<Informations> allDev() {
-        return informationRepository.findAll();
+        return informationPgRepository.findAll();
     }
 
     @PutMapping("/self/{type}/{db}")
@@ -90,13 +93,13 @@ public class InformationController {
             return new ContentResponse("비밀번호가 일치하지 않습니다.");
 
         String title = "self_" + type.toLowerCase();  
-        Informations information = informationRepository.findByTitle(title)
+        Informations information = informationPgRepository.findByTitle(title)
                                     .orElseThrow(() -> new InformationNotFoundException(title));
 
         information.setContent(newInformation.getContent());
 
         try {
-           informationRepository.save(information);
+           informationPgRepository.save(information);
 
            return new ContentResponse("수정이 완료되었습니다.");
         } catch (Exception e) {
@@ -116,13 +119,13 @@ public class InformationController {
           return new ContentResponse("포트폴리오는 수정이 불가합니다.");
 
         String title = "dev_" + type.toLowerCase();  
-        Informations information = informationRepository.findByTitle(title)
+        Informations information = informationPgRepository.findByTitle(title)
                                     .orElseThrow(() -> new InformationNotFoundException(title));
 
         information.setContent(newInformation.getContent());
 
         try {
-           informationRepository.save(information);
+           informationPgRepository.save(information);
 
            return new ContentResponse("수정이 완료되었습니다.");
         } catch (Exception e) {
@@ -139,7 +142,7 @@ public class InformationController {
             return new ContentResponse("비밀번호가 일치하지 않습니다.");
 
         String title = "self_" + type.toLowerCase();  
-        long deletedCount = informationRepository.deleteByTitle(title);
+        long deletedCount = informationPgRepository.deleteByTitle(title);
 
         if (deletedCount == 0) 
           return new ContentResponse("삭제에 실패하였습니다.");
@@ -156,7 +159,7 @@ public class InformationController {
             return new ContentResponse("비밀번호가 일치하지 않습니다.");
 
         String title = "dev_" + type.toLowerCase();  
-        long deletedCount = informationRepository.deleteByTitle(title);
+        long deletedCount = informationPgRepository.deleteByTitle(title);
 
         if (deletedCount == 0) 
           return new ContentResponse("삭제에 실패하였습니다.");

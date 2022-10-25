@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca25063c-feff-4d6c-bdf2-a0e59db7780f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/repository/InformationMongodbRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_4_0_3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-spring.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/BackendSpringApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/BackendSpringApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/controller/InformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/controller/InformationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/controller/ParticipatesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/controller/ParticipatesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/portfolio/techstack/backendspring/controller/InformationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/portfolio/techstack/backendspring/controller/InformationController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

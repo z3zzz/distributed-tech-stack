@@ -1,12 +1,13 @@
 package com.portfolio.techstack.backendspring.repository;
 
 import com.portfolio.techstack.backendspring.model.InformationsMongodb;
+import com.portfolio.techstack.backendspring.model.Informations;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
 public interface InformationMongodbRepository extends MongoRepository<InformationsMongodb, String> {
     @Query("{title: '?0'}")
-    InformationsMongodb findItemByTitle(String title);
+    Informations findItemByTitle(String title);
 
     public long count();
 

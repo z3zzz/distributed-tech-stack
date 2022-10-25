@@ -1,4 +1,6 @@
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/exception/DbNotFoundException.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/controller/InformationController.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/InformationPgRepository.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/exception/InformationNotFoundAdvice.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/model/InformationsMongodb.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/BackendSpringApplication.java
