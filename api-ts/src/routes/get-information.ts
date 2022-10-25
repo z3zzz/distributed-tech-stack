@@ -45,7 +45,7 @@ export async function getInformationRoutes(
     let data: InformationData | PortfolioData[];
 
     if (type === "portfolio") {
-      data = await portfolioModel.findAll();
+      data = await model.getPortfolios(db);
     } else {
       data = await model.findByTitle(`dev_${type.toLowerCase()}`, db);
     }
