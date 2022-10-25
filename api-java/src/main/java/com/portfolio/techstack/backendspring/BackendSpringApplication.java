@@ -13,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableMongoRepositories
-@ComponentScan({"com.portfolio.techstack.backendspring.repository"})
 public class BackendSpringApplication {
 
     @Autowired

@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca25063c-feff-4d6c-bdf2-a0e59db7780f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/BackendSpringApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/BackendSpringApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/repository/InformationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/portfolio/techstack/backendspring/repository/InformationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/portfolio/techstack/backendspring/BackendSpringApplication$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/portfolio/techstack/backendspring/BackendSpringApplication$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/portfolio/techstack/backendspring/BackendSpringApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/portfolio/techstack/backendspring/BackendSpringApplication.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
