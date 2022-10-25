@@ -4,7 +4,6 @@ import com.portfolio.techstack.backendspring.model.Informations;
 import com.portfolio.techstack.backendspring.model.Portfolios;
 import com.portfolio.techstack.backendspring.repository.InformationRepository;
 import com.portfolio.techstack.backendspring.repository.PortfoliosRepository;
-import com.portfolio.techstack.backendspring.repository.InformationPgRepository;
 import com.portfolio.techstack.backendspring.utils.ContentResponse;
 import com.portfolio.techstack.backendspring.utils.PutDeletePassword;
 
@@ -16,9 +15,6 @@ import java.util.List;
 
 @RestController
 public class InformationController {
-
-    @Autowired
-    private InformationPgRepository informationPgRepository;
 
     @Autowired
     private PortfoliosRepository portfoliosRepository;
@@ -35,7 +31,7 @@ public class InformationController {
 
     @GetMapping("/dev/portfolio/{db}")
     List<Portfolios> allPortfolios(@PathVariable String db){
-        return portfoliosRepository.findAll();
+        return portfoliosRepository.findAll(db);
     }
 
     @GetMapping("/dev/{type}/{db}")

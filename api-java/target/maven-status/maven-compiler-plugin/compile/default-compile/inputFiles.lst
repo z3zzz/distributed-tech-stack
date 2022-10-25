@@ -1,10 +1,13 @@
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/exception/DbNotFoundException.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/PortfoliosMongodbRepository.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/controller/InformationController.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/InformationPgRepository.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/exception/InformationNotFoundAdvice.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/model/InformationsMongodb.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/model/PortfoliosMongodb.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/BackendSpringApplication.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/model/Informations.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/ParticipatesMongodbRepository.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/InformationRepository.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/exception/InformationNotFoundException.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/model/Portfolios.java
@@ -13,5 +16,8 @@
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/controller/ParticipatesController.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/utils/PutDeletePassword.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/ParticipatesRepository.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/model/ParticipatesMongodb.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/PortfoliosPgRepository.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/InformationMongodbRepository.java
+/home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/repository/ParticipatesPgRepository.java
 /home/voldemort/portfolio/api-java/src/main/java/com/portfolio/techstack/backendspring/model/Participates.java
