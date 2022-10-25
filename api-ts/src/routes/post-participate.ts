@@ -3,11 +3,12 @@ import {
   FastifyPluginOptions,
   RouteShorthandOptions,
 } from "fastify";
-import { participateModel } from "../models";
+import { model } from "../models";
 
 interface PostParticipate {
   Params: {
     type: string;
+    db: string;
   };
   Body: {
     content: string;
@@ -32,20 +33,25 @@ export async function postParticipateRoutes(
     },
   };
 
-  app.post<PostParticipate>("/participate/:type", opts, async (req, res) => {
-    const { type }: { type: string } = req.params;
-    const { content } = req.body;
+  app.post<PostParticipate>(
+    "/participate/:type/:db",
+    opts,
+    async (req, res) => {
+      const { type, db }: { type: string; db: string } = req.params;
+      const { content } = req.body;
 
-    const { isCreated } = await participateModel.create({
-      title: type.toLowerCase(),
-      content,
-    });
+      const { isCreated } = await model.addParticipate({
+        title: type.toLowerCase(),
+        content,
+        db,
+      });
 
-    res.status(201);
-    if (isCreated) {
-      return { content: "등록이  완료되었습니다. 감사합니다:)" };
-    } else {
-      return { content: "등록에  실패하였습니다." };
+      res.status(201);
+      if (isCreated) {
+        return { content: "등록이  완료되었습니다. 감사합니다:)" };
+      } else {
+        return { content: "등록에  실패하였습니다." };
+      }
     }
-  });
+  );
 }

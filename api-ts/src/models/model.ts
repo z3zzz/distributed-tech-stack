@@ -3,11 +3,18 @@ import {
   informationMongodbModel,
   InformationMongodbModel,
 } from "./informations-mongodb";
+import { participateModel, ParticipateModel } from "./participates";
+import {
+  participateMongodbModel,
+  ParticipateMongodbModel,
+} from "./participates-mongodb";
 
 class Model {
   constructor(
     private informationPgModel: InformationModel,
-    private informationMongodbModel: InformationMongodbModel
+    private informationMongodbModel: InformationMongodbModel,
+    private participatePgModel: ParticipateModel,
+    private participateMongodbModel: ParticipateMongodbModel
   ) {}
 
   public findByTitle(title: string, db: string) {
@@ -34,7 +41,7 @@ class Model {
     throw new Error(`DB type not recognized: ${db}`);
   }
 
-  public update({
+  public updateInformation({
     title,
     content,
     photos,
@@ -59,6 +66,34 @@ class Model {
 
     throw new Error(`DB type not recognized: ${db}`);
   }
+
+  public addParticipate({
+    title,
+    content,
+    db,
+  }: {
+    title: string;
+    content: string;
+    db: string;
+  }) {
+    if (db === "pg") {
+      return this.participatePgModel.create({ title, content });
+    }
+
+    if (db === "mongodb") {
+      return this.participateMongodbModel.create({
+        title,
+        content,
+      });
+    }
+
+    throw new Error(`DB type not recognized: ${db}`);
+  }
 }
 
-export const model = new Model(informationModel, informationMongodbModel);
+export const model = new Model(
+  informationModel,
+  informationMongodbModel,
+  participateModel,
+  participateMongodbModel
+);

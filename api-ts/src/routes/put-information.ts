@@ -54,7 +54,7 @@ export async function putInformationRoutes(
     }
 
     app.log.info(content);
-    const { isUpdated } = await model.update({
+    const { isUpdated } = await model.updateInformation({
       title: `self_${type.toLowerCase()}`,
       content,
       photos,
@@ -92,7 +92,7 @@ export async function putInformationRoutes(
 
       isUpdated = result;
     } else {
-      const { isUpdated: result } = await model.update({
+      const { isUpdated: result } = await model.updateInformation({
         title,
         content,
         photos,
