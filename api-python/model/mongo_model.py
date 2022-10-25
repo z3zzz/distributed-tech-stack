@@ -13,7 +13,7 @@ class MongoModel:
         return col.insert_one({"title": title, "content": content, "photos": [], "count": 0})
 
     def update_information(self, title, content):
-        col.update_one({"title": title}, {"content": content})
+        col.update_one({"title": title}, { "$set": { "content": content } })
 
     def delete_information(self, title):
         col.delete_one({"title": title})
