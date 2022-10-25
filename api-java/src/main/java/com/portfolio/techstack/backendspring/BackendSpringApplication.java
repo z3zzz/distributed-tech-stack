@@ -18,11 +18,11 @@ public class BackendSpringApplication {
     @Autowired
     InformationMongodbRepository informationMongodbRepository;
 
-	public static void main(String[] args) {
-    System.out.println(org.hibernate.Version.getVersionString());
+  	public static void main(String[] args) {
+        System.out.println(org.hibernate.Version.getVersionString());
 
-		SpringApplication.run(BackendSpringApplication.class, args);
-	}
+		    SpringApplication.run(BackendSpringApplication.class, args);
+	  }
 
   @Bean
   public WebMvcConfigurer corsConfigurer() {

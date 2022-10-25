@@ -42,8 +42,7 @@ public class InformationController {
     Informations oneDev(@PathVariable String type, @PathVariable String db){
         String title = "dev_" + type.toLowerCase();  
 
-        return informationPgRepository.findByTitle(title)
-                .orElseThrow(() -> new InformationNotFoundException(title));
+        return informationRepository.findByTitle(title, db);
     }
 
     @PostMapping("/self/{type}/{db}")
@@ -52,7 +51,7 @@ public class InformationController {
         information.setTitle(title);
         
         try {
-            informationPgRepository.save(information);
+            informationRepository.save(information, db);
 
             return ResponseEntity.status(201).body(new ContentResponse("등록이 완료되었습니다. 감사합니다 :)"));
         } catch (Exception e) {
@@ -66,7 +65,7 @@ public class InformationController {
         information.setTitle(title);
         
         try {
-            informationPgRepository.save(information);
+            informationRepository.save(information, db);
 
             return ResponseEntity.status(201).body(new ContentResponse("등록이 완료되었습니다. 감사합니다 :)"));
         } catch (Exception e) {
@@ -74,14 +73,14 @@ public class InformationController {
         }
     }
 
-    @GetMapping("/self")
-    List<Informations> allSelf() {
-        return informationPgRepository.findAll();
+    @GetMapping("/self/{db}")
+    List<Informations> allSelf(@PathVariable String db) {
+        return informationRepository.findAll(db);
     }
 
-    @GetMapping("/dev")
-    List<Informations> allDev() {
-        return informationPgRepository.findAll();
+    @GetMapping("/dev/{db}")
+    List<Informations> allDev(@PathVariable String db) {
+        return informationRepository.findAll(db);
     }
 
     @PutMapping("/self/{type}/{db}")
@@ -93,16 +92,14 @@ public class InformationController {
             return new ContentResponse("비밀번호가 일치하지 않습니다.");
 
         String title = "self_" + type.toLowerCase();  
-        Informations information = informationPgRepository.findByTitle(title)
-                                    .orElseThrow(() -> new InformationNotFoundException(title));
-
-        information.setContent(newInformation.getContent());
+        String content = newInformation.getContent();
 
         try {
-           informationPgRepository.save(information);
+           informationRepository.update(title, content, db);
 
            return new ContentResponse("수정이 완료되었습니다.");
         } catch (Exception e) {
+          System.out.println(e);
           return new ContentResponse("수정에 실패하였습니다.");
         } 
     }
@@ -116,20 +113,17 @@ public class InformationController {
             return new ContentResponse("비밀번호가 일치하지 않습니다.");
 
         if (type == "portfolio")
-          return new ContentResponse("포트폴리오는 수정이 불가합니다.");
+            return new ContentResponse("포트폴리오는 수정이 불가합니다.");
 
         String title = "dev_" + type.toLowerCase();  
-        Informations information = informationPgRepository.findByTitle(title)
-                                    .orElseThrow(() -> new InformationNotFoundException(title));
-
-        information.setContent(newInformation.getContent());
+        String content = newInformation.getContent();
 
         try {
-           informationPgRepository.save(information);
+            informationRepository.update(title, content, db);
 
-           return new ContentResponse("수정이 완료되었습니다.");
+            return new ContentResponse("수정이 완료되었습니다.");
         } catch (Exception e) {
-          return new ContentResponse("수정에 실패하였습니다.");
+            return new ContentResponse("수정에 실패하였습니다.");
         } 
     }
 
@@ -142,7 +136,7 @@ public class InformationController {
             return new ContentResponse("비밀번호가 일치하지 않습니다.");
 
         String title = "self_" + type.toLowerCase();  
-        long deletedCount = informationPgRepository.deleteByTitle(title);
+        long deletedCount = informationRepository.deleteByTitle(title, db);
 
         if (deletedCount == 0) 
           return new ContentResponse("삭제에 실패하였습니다.");
@@ -159,7 +153,7 @@ public class InformationController {
             return new ContentResponse("비밀번호가 일치하지 않습니다.");
 
         String title = "dev_" + type.toLowerCase();  
-        long deletedCount = informationPgRepository.deleteByTitle(title);
+        long deletedCount = informationRepository.deleteByTitle(title, db);
 
         if (deletedCount == 0) 
           return new ContentResponse("삭제에 실패하였습니다.");

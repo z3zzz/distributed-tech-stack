@@ -17,9 +17,8 @@ public class InformationsMongodb {
 
     private List<String> photos;
 
-    public InformationsMongodb(String id, String title, String content, List<String> photos) {
+    public InformationsMongodb(String title, String content, List<String> photos) {
         super();
-        this.id = id;
         this.title = title;
         this.content = content;
         this.photos = photos;
@@ -55,6 +54,11 @@ public class InformationsMongodb {
 
     public void setPhotos(List<String> photos) {
       this.photos = photos;
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + getId() + ", title: " + getTitle() + ", content: " + getContent();
     }
 
 }
