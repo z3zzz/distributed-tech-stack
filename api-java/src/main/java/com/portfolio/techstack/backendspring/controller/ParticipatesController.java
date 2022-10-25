@@ -20,8 +20,8 @@ public class ParticipatesController {
         return repository.findAll();
     }
 
-    @PostMapping("/participate/{type}")
-    ResponseEntity<ContentResponse> addSelf(@PathVariable String type, @RequestBody Participates participate) {
+    @PostMapping("/participate/{type}/{db}")
+    ResponseEntity<ContentResponse> addSelf(@PathVariable String type, @PathVariable String db, @RequestBody Participates participate) {
         String title = type.toLowerCase();  
         participate.setTitle(title);
         

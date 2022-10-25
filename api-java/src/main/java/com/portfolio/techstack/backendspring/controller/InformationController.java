@@ -22,29 +22,29 @@ public class InformationController {
     @Autowired
     private PortfoliosRepository portfoliosRepository;
 
-    @GetMapping("/self/{type}")
-    Informations oneSelf(@PathVariable String type){
+    @GetMapping("/self/{type}/{db}")
+    Informations oneSelf(@PathVariable String type, @PathVariable String db){
         String title = "self_" + type.toLowerCase();  
 
         return informationRepository.findByTitle(title)
                 .orElseThrow(() -> new InformationNotFoundException(title));
     }
 
-    @GetMapping("/dev/portfolio")
-    List<Portfolios> allPortfolios(){
+    @GetMapping("/dev/portfolio/{db}")
+    List<Portfolios> allPortfolios(@PathVariable String db){
         return portfoliosRepository.findAll();
     }
 
-    @GetMapping("/dev/{type}")
-    Informations oneDev(@PathVariable String type){
+    @GetMapping("/dev/{type}/{db}")
+    Informations oneDev(@PathVariable String type, @PathVariable String db){
         String title = "dev_" + type.toLowerCase();  
 
         return informationRepository.findByTitle(title)
                 .orElseThrow(() -> new InformationNotFoundException(title));
     }
 
-    @PostMapping("/self/{type}")
-    ResponseEntity<ContentResponse> addSelf(@PathVariable String type, @RequestBody Informations information) {
+    @PostMapping("/self/{type}/{db}")
+    ResponseEntity<ContentResponse> addSelf(@PathVariable String type, @PathVariable String db, @RequestBody Informations information) {
         String title = "self_" + type.toLowerCase();  
         information.setTitle(title);
         
@@ -57,8 +57,8 @@ public class InformationController {
         }
     }
 
-    @PostMapping("/dev/{type}")
-    ResponseEntity<ContentResponse> addDev(@PathVariable String type, @RequestBody Informations information) {
+    @PostMapping("/dev/{type}/{db}")
+    ResponseEntity<ContentResponse> addDev(@PathVariable String type, @PathVariable String db, @RequestBody Informations information) {
         String title = "dev_" + type.toLowerCase();  
         information.setTitle(title);
         
@@ -81,8 +81,8 @@ public class InformationController {
         return informationRepository.findAll();
     }
 
-    @PutMapping("/self/{type}")
-    ContentResponse updateSelf(@RequestBody PutDeletePassword newInformation, @PathVariable String type) {
+    @PutMapping("/self/{type}/{db}")
+    ContentResponse updateSelf(@RequestBody PutDeletePassword newInformation, @PathVariable String type, @PathVariable String db) {
         String password = newInformation.getPassword();
         String correctPassword = System.getenv("MY_PASSWORD");
 
@@ -104,8 +104,8 @@ public class InformationController {
         } 
     }
 
-    @PutMapping("/dev/{type}")
-    ContentResponse updateDev(@RequestBody PutDeletePassword newInformation, @PathVariable String type) {
+    @PutMapping("/dev/{type}/{db}")
+    ContentResponse updateDev(@RequestBody PutDeletePassword newInformation, @PathVariable String type, @PathVariable String db) {
         String password = newInformation.getPassword();
         String correctPassword = System.getenv("MY_PASSWORD");
 
@@ -130,8 +130,8 @@ public class InformationController {
         } 
     }
 
-    @DeleteMapping("/self/{type}")
-    ContentResponse deleteSelf(@PathVariable String type, @RequestBody PutDeletePassword passwordInput) {
+    @DeleteMapping("/self/{type}/{db}")
+    ContentResponse deleteSelf(@PathVariable String type, @PathVariable String db, @RequestBody PutDeletePassword passwordInput) {
         String password = passwordInput.getPassword();
         String correctPassword = System.getenv("MY_PASSWORD");
 
@@ -147,8 +147,8 @@ public class InformationController {
           return new ContentResponse("삭제에 성공하였습니다.");
     }
 
-    @DeleteMapping("/dev/{type}")
-    ContentResponse deleteDev(@PathVariable String type, @RequestBody PutDeletePassword passwordInput) {
+    @DeleteMapping("/dev/{type}/{db}")
+    ContentResponse deleteDev(@PathVariable String type, @PathVariable String db, @RequestBody PutDeletePassword passwordInput) {
         String password = passwordInput.getPassword();
         String correctPassword = System.getenv("MY_PASSWORD");
 
