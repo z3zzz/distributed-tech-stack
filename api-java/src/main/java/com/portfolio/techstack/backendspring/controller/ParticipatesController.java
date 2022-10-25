@@ -15,9 +15,9 @@ public class ParticipatesController {
     @Autowired
     private ParticipatesRepository repository;
 
-    @GetMapping("/participates")
-    List<Participates> all(){
-        return repository.findAll();
+    @GetMapping("/participates/{db}")
+    List<Participates> all(@PathVariable String db){
+        return repository.findAll(db);
     }
 
     @PostMapping("/participate/{type}/{db}")
@@ -26,7 +26,7 @@ public class ParticipatesController {
         participate.setTitle(title);
         
         try {
-            repository.save(participate);
+            repository.save(participate, db);
 
             return ResponseEntity.status(201).body(new ContentResponse("등록이 완료되었습니다. 감사합니다 :)"));
         } catch (Exception e) {
