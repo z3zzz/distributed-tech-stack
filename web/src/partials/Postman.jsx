@@ -116,7 +116,7 @@ function Postman({
           )}
         </select>
         <button
-          className='bg-blue-500 hover:bg-blue-700 block mb-2 text-white font-bold lg:ml-2 py-2 px-4 rounded-md'
+          className='bg-blue-500 hover:bg-blue-700 block mb-2 text-white flex-1 sm:flex-none font-bold lg:ml-2 py-2 px-4 rounded-md'
           onClick={onClick}
         >
           Send
