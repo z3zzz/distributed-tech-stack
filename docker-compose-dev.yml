@@ -49,6 +49,7 @@ services:
       - ./api-python:/app
   web:
     container_name: web
-    image: kwangdock/portfolio-tech-stack-web
+    #image: kwangdock/portfolio-tech-stack-web
+    image: kwangdock/portfolio-tech-stack-web-dev
     expose:
       - 3000

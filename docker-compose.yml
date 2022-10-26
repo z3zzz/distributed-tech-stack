@@ -6,6 +6,8 @@ services:
     depends_on:
       - web
       - api-ts
+      - api-java
+      - api-python
     ports:
       - 80:80
       - 443:443
@@ -36,7 +38,7 @@ services:
     container_name: api-python
     image: kwangdock/portfolio-tech-stack-api-python
     expose:
-      - 8000
+      - 5000
     env_file:
       - .env
   web:
