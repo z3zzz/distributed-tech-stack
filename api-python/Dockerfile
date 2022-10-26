@@ -1,16 +1,8 @@
-# builder name not supported in Elastic Beanstalk -> So use 0 phase (default name for phase)
-FROM node:16-alpine 
+FROM python:3.8-alpine 
 
 WORKDIR /app
-COPY package.json . 
-RUN npm install
-RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+COPY requirements.txt .
+RUN pip3 install -r ./requirements.txt
 COPY . .
 
-RUN npm run build
-
-# dispose all files created in above 0 phase, except bundle.js file.
-FROM node:16-alpine
-WORKDIR /app
-COPY --from=0 /app/dist /app/dist
-CMD ["node", "dist/index.js"]
+CMD ["gunicorn", "-w", "2", "api:app"]

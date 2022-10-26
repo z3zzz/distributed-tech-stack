@@ -3,7 +3,7 @@
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-.env
+.env*
 certbot/
 db/
 __pycache__/

@@ -9,6 +9,7 @@ flask-restful = "*"
 psycopg2-binary = "*"
 pymongo = "*"
 flask-cors = "*"
+gunicorn = "*"
 
 [dev-packages]
 

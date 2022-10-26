@@ -36,6 +36,7 @@
       "@fastify/jwt",
       "@fastify/postgres",
       "@fastify/cookie",
+      "@fastify/mongodb",
       "jest"
     ] /* Specify type package names to be included without being referenced in a source file. */,
     // "allowUmdGlobalAccess": true,                     /* Allow accessing UMD globals from modules. */

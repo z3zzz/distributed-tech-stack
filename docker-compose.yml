@@ -29,7 +29,14 @@ services:
     container_name: api-java
     image: kwangdock/portfolio-tech-stack-api-java
     expose:
-      - 8080
+      - 5000
+    env_file:
+      - .env
+  api-python:
+    container_name: api-python
+    image: kwangdock/portfolio-tech-stack-api-python
+    expose:
+      - 8000
     env_file:
       - .env
   web:
