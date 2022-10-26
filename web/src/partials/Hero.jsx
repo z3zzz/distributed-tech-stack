@@ -47,6 +47,10 @@ function Hero({ onRequestClick, scrollRef, setHasRequested }) {
               저에 대한 이야기와 포트폴리오들을 API 요청하는 방식으로 <br />{" "}
               재미있게 보실 수 있도록 만들어 보았습니다.
               <br className='hidden md:block' />
+              <br />
+              <span className='font-semibold text-gray-700'>
+                다양한 언어와 DB를 조합해 응답시간을 비교해 보세요 :)
+              </span>
             </p>
             {/* Button + Avatars */}
             <div className='sm:flex sm:items-center sm:justify-center md:justify-start space-y-6 sm:space-y-0 sm:space-x-5'>
