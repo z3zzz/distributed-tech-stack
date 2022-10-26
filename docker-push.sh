@@ -2,8 +2,8 @@
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 
 
 # build and push nginx
-#docker build -t kwangdock/portfolio-tech-stack-nginx ./nginx && 
-#docker push kwangdock/portfolio-tech-stack-nginx
+docker build -t kwangdock/portfolio-tech-stack-nginx ./nginx && 
+docker push kwangdock/portfolio-tech-stack-nginx
 
 # build and push web
 #docker build -t kwangdock/portfolio-tech-stack-web ./web && 
@@ -14,8 +14,8 @@ echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 #docker push kwangdock/portfolio-tech-stack-api-ts
 
 # build and push api-java
-docker build -t kwangdock/portfolio-tech-stack-api-java ./api-java && 
-docker push kwangdock/portfolio-tech-stack-api-java
+#docker build -t kwangdock/portfolio-tech-stack-api-java ./api-java && 
+#docker push kwangdock/portfolio-tech-stack-api-java
 
 # build and push api-python
 #docker build -t kwangdock/portfolio-tech-stack-api-python ./api-python && 
