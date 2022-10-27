@@ -39,8 +39,9 @@ Microservice 형태로 개발된 각 Back-End 서버와 DB를 조합해 Restful 
 * Docker, Travis, Shell Script...
 	
 ## 실행 방법
-1. `git clone  
-2. 
+### 현재 조합으로 실행
+1. `git clone git@github.com:z3zzz/distributed-tech-stack.git` 
+2. .env 파일 생성 (README-ENV.md 참조)
 
 ```
 $ cd ../lorem
