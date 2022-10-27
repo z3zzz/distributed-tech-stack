@@ -12,21 +12,35 @@
 
 
 ## 프로젝트 개요
-This project is simple Lorem ipsum dolor generator.
+Microservice 형태로 개발된 각 Back-End 서버와 DB를 조합해 Restful API 요청 및 성능 검증을 할 수 있는 프로그램
+<br />
+
+![image](https://user-images.githubusercontent.com/91174156/198166733-f5c2d5af-4728-4ec5-9af0-58503bc3ad14.png)
+
+<br />
+
+- TLS 보안 (OpenSSL)
+- 컨테이너 (Docker Compose)
+- CI/CD (Travis, Shell Script)
 
 ## 문제 인식
+1. 기획된 서비스에 적합한 Back-End 프레임워크(언어 및 패키지)와 DB의 조합을 찾고 빠른 성능 검증이 필요함
+2. 팀 내 기술 스택이 상이할 시 API 개발 협업이 어려움 
 
 ## 해결 방안
-
+1. 컨테이너 추가 및 Reverse-Proxy 설정만으로 빠르게 조합 추가 및 Restful API 성능 검증
+2. 마이크로서비스 기반 아키텍쳐로 유연한 기술 스택 협업 가능 
 
 ## 사용 기술
-Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
+* Java: 11 (Spring Boot, HikariCP, Hibernate, Tomcat)
+* Python: 3.8 (Flask, gunicorn, psycopg2)
+* Typescript: 4.5 (Fastify, ESBuild)  
+* Nginx, OpenSSL
+* Docker, Travis, Shell Script...
 	
 ## 실행 방법
-To run this project, install it locally using npm:
+1. `git clone  
+2. 
 
 ```
 $ cd ../lorem
