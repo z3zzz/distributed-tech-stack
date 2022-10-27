@@ -31,7 +31,8 @@ Microservice 형태로 개발된 각 Back-End 서버와 DB를 조합해 Restful 
 ## 사용 기술
 * Java: 11 (Spring Boot, HikariCP, Hibernate, Tomcat)
 * Python: 3.8 (Flask, gunicorn, psycopg2)
-* Typescript: 4.5 (Fastify, ESBuild)  
+* Typescript: 4.5 (Fastify, ESBuild)
+* React: 18
 * Nginx, OpenSSL
 * Docker, Travis, Shell Script...
 	
