@@ -11,7 +11,7 @@
 Microservice 형태로 개발된 각 Back-End 서버와 DB를 조합해 Restful API 요청 및 성능 검증을 할 수 있는 프로그램
 <br />
 
-![image](https://user-images.githubusercontent.com/91174156/198166733-f5c2d5af-4728-4ec5-9af0-58503bc3ad14.png)
+![image](https://user-images.githubusercontent.com/91174156/199702019-576da6eb-8fc9-4303-9e41-2eb1687fffce.png)
 
 <br />
 
