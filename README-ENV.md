@@ -7,30 +7,30 @@
 ## 예시
 --- 
 
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=my_password
-POSTGRES_DB=my_db
-POSTGRES_URL=postgresql://postgres:my_password@my_host:5432/my_db
+POSTGRES_USER=postgres <br />
+POSTGRES_PASSWORD=my_password  <br />
+POSTGRES_DB=my_db <br />
+POSTGRES_URL=postgresql://postgres:my_password@my_host:5432/my_db  <br />
 
-MY_PASSWORD=my_password
-MY_DATABASE=my_db
+MY_PASSWORD=my_password  <br />
+MY_DATABASE=my_db <br />
 
-DATASOURCE_URL=jdbc:postgresql://my_host:5432/my_db
-DATASOURCE_USERNAME=postgres
-DATASOURCE_PASSWORD=my_password
-DATASOURCE_DATABASENAME=my_db
-DATASOURCE_SERVERNAME=my_host
+DATASOURCE_URL=jdbc:postgresql://my_host:5432/my_db <br />
+DATASOURCE_USERNAME=postgres <br />
+DATASOURCE_PASSWORD=my_password <br />
+DATASOURCE_DATABASENAME=my_db <br />
+DATASOURCE_SERVERNAME=my_host <br />
 
-NODE_ENV=production
-JAVA_ENV=production
-PYTHON_ENV=production
+NODE_ENV=production <br />
+JAVA_ENV=production <br />
+PYTHON_ENV=production <br />
 
-MONGODB_URL=mongodb+srv://my_username:my_password@cluster0.abcde.mongodb.net/?retryWrites=true&w=majority
-MONGODB_DATABASE=my_mongodb_db
-MONGODB_TS_URL=mongodb+srv://my_username:my_password@cluster0.abcde.mongodb.net/my_mongodb_db?retryWrites=true&w=majority
-MONGODB_COLLECTION=my_mongodb_collection
+MONGODB_URL=mongodb+srv://my_username:my_password@cluster0.abcde.mongodb.net/?retryWrites=true&w=majority <br />
+MONGODB_DATABASE=my_mongodb_db <br />
+MONGODB_TS_URL=mongodb+srv://my_username:my_password@cluster0.abcde.mongodb.net/my_mongodb_db?retryWrites=true&w=majority <br />
+MONGODB_COLLECTION=my_mongodb_collection <br />
 
-DB_DATABASE=my_db
-DB_USERNAME=postgres
-DB_PASSWORD=my_password
-DB_HOST=my_host
+DB_DATABASE=my_db <br />
+DB_USERNAME=postgres <br />
+DB_PASSWORD=my_password <br />
+DB_HOST=my_host <br />
